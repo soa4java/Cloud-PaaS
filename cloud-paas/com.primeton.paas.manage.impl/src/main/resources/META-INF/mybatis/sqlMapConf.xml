@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="useGeneratedKeys" value="false" />
+		<setting name="autoMappingBehavior" value="PARTIAL" />
+		<setting name="defaultExecutorType" value="SIMPLE" />
+		<setting name="defaultStatementTimeout" value="25" />
+		<setting name="safeRowBoundsEnabled" value="false" />
+		<setting name="mapUnderscoreToCamelCase" value="false" />
+		<setting name="localCacheScope" value="SESSION" />
+		<setting name="jdbcTypeForNull" value="OTHER" />
+		<!-- 
+		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" /> 
+		-->
+	</settings>
+	
+	<typeAliases>
+		<typeAlias alias="User" type="com.primeton.paas.manage.api.model.User"/>
+		<typeAlias alias="VIPSegment" type="com.primeton.paas.manage.spi.model.VIPSegment" />
+        <typeAlias alias="HostTemplate" type="com.primeton.paas.manage.api.model.HostTemplate"/>
+		<typeAlias alias="Order" type="com.primeton.paas.manage.api.model.Order"/>
+		<typeAlias alias="OrderItem" type="com.primeton.paas.manage.api.model.OrderItem"/>
+		<typeAlias alias="ItemAttr" type="com.primeton.paas.manage.api.model.OrderItemAttr"/>
+		<typeAlias alias="StoragePoolConfig" type="com.primeton.paas.manage.spi.model.StoragePoolConfig"/>
+		<typeAlias alias="Storage" type="com.primeton.paas.manage.spi.model.Storage"/>
+		<typeAlias alias="WhiteList" type="com.primeton.paas.manage.spi.model.WhiteList"/>
+		<typeAlias alias="StretchStrategy" type="com.primeton.paas.manage.api.app.StretchStrategy"/>
+		<typeAlias alias="StrategyItem" type="com.primeton.paas.manage.api.app.StrategyItem"/>
+		<typeAlias alias="ServiceWarnStrategy" type="com.primeton.paas.manage.api.app.ServiceWarnStrategy"/>
+		<typeAlias alias="ServiceWarnStrategyItem" type="com.primeton.paas.manage.api.app.ServiceWarnStrategyItem"/>
+		<typeAlias alias="Task" type="com.primeton.paas.manage.api.model.Task" />
+		<typeAlias alias="Var" type="com.primeton.paas.manage.api.model.Variable"/>
+		<typeAlias alias="VmPoolConfig" type="com.primeton.paas.manage.spi.model.VmPoolConfig" />
+		
+		<typeAlias alias="CapResauth" type="com.primeton.paas.manage.api.model.CapResauth" />
+		<typeAlias alias="CapMenu" type="com.primeton.paas.manage.api.model.CapMenu" />
+		<typeAlias alias="CapFunction" type="com.primeton.paas.manage.api.model.CapFunction" />
+		<typeAlias alias="CapPartyauth" type="com.primeton.paas.manage.api.model.CapPartyauth" />
+		<typeAlias alias="CapRole" type="com.primeton.paas.manage.api.model.CapRole" />
+		<typeAlias alias="CapUser" type="com.primeton.paas.manage.api.model.CapUser" />
+    </typeAliases>
+    
+	<mappers>
+		<mapper resource="META-INF/mybatis/primeton/paas/vipSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/orderSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/userSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/orderSqlMap.xml" />
+		
+		<mapper resource="META-INF/mybatis/primeton/paas/varSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/hostTemplateSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/storageSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/taskSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/vmPoolConfigSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/storagePoolConfigSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/stretchSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/serviceWarnStrategySqlMap.xml" />
+		
+		<mapper resource="META-INF/mybatis/primeton/paas/hostMonitorSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/appMonitorSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/serviceMonitorSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/appEPSRelSqlMap.xml" />
+		<mapper resource="META-INF/mybatis/primeton/paas/serviceEPSRelSqlMap.xml" />
+		
+		<mapper resource="META-INF/mybatis/primeton/paas/authBaseSqlMap.xml" />
+	</mappers>
+</configuration>
+
+
+
+
+	
+

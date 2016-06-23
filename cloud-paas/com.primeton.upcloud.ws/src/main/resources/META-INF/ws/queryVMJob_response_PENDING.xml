@@ -1,0 +1,14 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <_tns_:queryVMJobResponse xmlns:_tns_="http://www.unionpay.com/ResourceService">
+         <ns1:out1 xmlns:ns1="http://www.unionpay.com/ResourceService">
+            <ns2:jobID xmlns:ns2="http://response.api.service.cloud.primeton.com">2013092914124434</ns2:jobID>
+            <ns2:jobStatus xmlns:ns2="http://response.api.service.cloud.primeton.com">PENDING</ns2:jobStatus>
+            <ns2:message xmlns:ns2="http://response.api.service.cloud.primeton.com">Task is processing.</ns2:message>
+            <ns2:responseMessage xmlns:ns2="http://response.api.service.cloud.primeton.com">Query job status complete.</ns2:responseMessage>
+            <ns2:responseStatus xmlns:ns2="http://response.api.service.cloud.primeton.com">OK</ns2:responseStatus>
+            <ns2:vmList ns3:nil="true" xmlns:ns2="http://response.api.service.cloud.primeton.com" xmlns:ns3="http://www.w3.org/2001/XMLSchema-instance"/>
+         </ns1:out1>
+      </_tns_:queryVMJobResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

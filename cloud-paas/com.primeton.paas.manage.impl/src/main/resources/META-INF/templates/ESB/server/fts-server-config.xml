@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Template Author : ZhongWen.Li (mailto:lizw@primeton.com) -->
+<!-- Generate by Apache Velocity -->
+<!--this is root! -->
+<filetransfer enable="false">
+	<!--threadpool config! -->
+	<threadpool>
+		<maxthreads>300</maxthreads>
+		<minthreads>5</minthreads>
+		<idle>120000</idle>
+	</threadpool>
+	<!--datebase config! -->
+	<!-- 
+	<dbconfig> 
+		<driver>com.mysql.jdbc.Driver</driver> 
+		<connectionurl>jdbc:mysql://127.0.0.1:3306/filetransfer</connectionurl> 
+		<user>root</user> 
+		<password>000000</password> 
+	</dbconfig> 
+	-->
+	<dbconfig>
+		<dbtype>${DatabaseType}</dbtype>
+		<driver>${C3P0DriverClass}</driver>
+		<connectionurl>${C3p0Url}</connectionurl>
+		<user>${C3p0UserName}</user>
+		<password>${C3p0Password}</password>
+	</dbconfig>
+	<!--c3p0 config! -->
+	<c3p0pool>
+		<!--Default: 3 initialPoolSize -->
+		<iniSize>3</iniSize>
+		<minSize>2</minSize>
+		<!--Default: 15 maxPoolSize -->
+		<maxSize>50</maxSize>
+		<!--Default: 3 acquireIncrement -->
+		<acquireIncrement>3</acquireIncrement>
+		<!--Default: 0 idleConnectionTestPeriod -->
+		<IdleConnectionTestPeriod>60</IdleConnectionTestPeriod>
+		<!--Default: 0 maxIdleTime -->
+		<MaxIdleTime>25000</MaxIdleTime>
+	</c3p0pool>
+	<!--mq config! -->
+	<mqconfig>
+		<url>tcp://${localhost}:${port}</url>
+		<!--reconnect interval when disconnected with mq , in seconds! -->
+		<reConnectTime>5</reConnectTime>
+		<heartbeat_interval>1</heartbeat_interval>
+	</mqconfig>
+	<jmxconfig>
+		<host>${localhost}</host>
+		<port>${jmxPort}</port>
+	</jmxconfig>
+</filetransfer>

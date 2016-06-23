@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<application xmlns="http://www.primeton.com/xmlns/paas/1.0">
+   <module name="AsyncHttpIn">
+       <!--http接入异步调用超时时间，单位秒-->
+       <group name="default">
+           <configValue key="timeout">60</configValue>
+       </group>
+   </module>
+   <module name="AsyncHttpOut">
+       <!--http接出异步调用超时时间，单位秒-->
+       <group name="default">
+           <configValue key="encoding">UTF-8</configValue>
+           <configValue key="ConnectionTimeout">60</configValue>
+           <configValue key="RequestTimeout">60</configValue>
+       </group>
+   </module>
+</application>

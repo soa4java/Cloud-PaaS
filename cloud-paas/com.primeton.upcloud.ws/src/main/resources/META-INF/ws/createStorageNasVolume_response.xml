@@ -1,0 +1,11 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <_tns_:createStorageNasVolumeResponse xmlns:_tns_="http://www.unionpay.com/ResourceService">
+         <ns1:out1 xmlns:ns1="http://www.unionpay.com/ResourceService">
+            <ns2:jobID xmlns:ns2="http://response.api.service.cloud.primeton.com">2013101417041839</ns2:jobID>
+            <ns2:responseMessage xmlns:ns2="http://response.api.service.cloud.primeton.com">Nas volume has been created!</ns2:responseMessage>
+            <ns2:responseStatus xmlns:ns2="http://response.api.service.cloud.primeton.com">OK</ns2:responseStatus>
+         </ns1:out1>
+      </_tns_:createStorageNasVolumeResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

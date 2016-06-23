@@ -1,0 +1,9 @@
+com.primeton.paas.manage.api.impl.order.SingleDestroyServiceOrderProcessor
+com.primeton.paas.manage.api.impl.order.DefaultDestroyServiceOrderProcessor
+com.primeton.paas.manage.api.impl.order.SingleCreateRedisOrderProcessor
+com.primeton.paas.manage.api.impl.order.CreateGatewayOrderProcessor
+com.primeton.paas.manage.api.impl.order.UpdateGatewayOrderProcessor
+com.primeton.paas.manage.api.impl.order.CreateRedisSentinelOrderProcessor
+com.primeton.paas.manage.api.impl.order.CreateJobCtrlOrderProcessor
+com.primeton.paas.manage.api.impl.order.CreateEsbOrderProcessor
+com.primeton.paas.manage.api.impl.order.SingleCreateMsgQueueOrderProcessor

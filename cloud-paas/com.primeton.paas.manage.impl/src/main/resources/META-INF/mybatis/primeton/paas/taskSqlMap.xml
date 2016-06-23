@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="taskSqlMap">
+	
+	<!-- <typeAlias alias="Task" type="com.primeton.paas.manage.api.model.Task" /> -->
+	
+		<!-- 根据ID查询任务信息 -->
+	<select id="getTaskById" parameterType="java.lang.String" resultType="Task">
+		SELECT
+		    id,
+		    type,
+		    status,
+		    timeout,
+		    startTime,
+		    finalTime,
+		    finishTime,
+		    exceptionTime,
+		    abortTime,
+		    handleResult,
+		    exception,
+		    owner
+		FROM
+		    pas_task
+		where id = ${value}
+	</select>
+
+	<insert id="addTask" parameterType="Task">
+		INSERT INTO PAS_TASK ( ID, TYPE, STATUS
+			<if test="timeout!=null">,TIMEOUT</if>
+			<if test="startTime!=null">,STARTTIME</if>
+			<if test="finalTime!=null">,FINALTIME</if>
+			<if test="finishTime!=null">,FINISHTIME</if>
+			<if test="exceptionTime!=null">,EXCEPTIONTIME</if>
+			<if test="abortTime!=null">,ABORTTIME</if>
+			<if test="handleResult!=null">,HANDLERESULT</if>
+			<if test="exception!=null">,EXCEPTION</if>
+			<if test="owner!=null">,owner</if>
+			 ) 
+		VALUES ( #{id}, #{type}, #{status}
+			<if test="timeout!=null">,#{timeout}</if>
+			<if test="startTime!=null">,#{startTime}</if>
+			<if test="finalTime!=null">,#{finalTime}</if>
+			<if test="finishTime!=null">,#{finishTime}</if>
+			<if test="exceptionTime!=null">,#{exceptionTime}</if>
+			<if test="abortTime!=null">,#{abortTime}</if>
+			<if test="handleResult!=null">,#{handleResult}</if>
+			<if test="exception!=null">,#{exception}</if>
+			<if test="owner!=null">,#{owner}</if>
+			)
+	</insert>
+	
+	<select id="getTasks" parameterType="java.util.HashMap" resultType="Task">
+		SELECT
+		    id,
+		    type,
+		    status,
+		    timeout,
+		    startTime,
+		    finalTime,
+		    finishTime,
+		    exceptionTime,
+		    abortTime,
+		    handleResult,
+		    EXCEPTION,
+		    owner
+		FROM
+		    pas_task
+		<where>
+			<if test="id != null">
+				id like concat('%',#{id},'%')
+			</if>
+			<if test="type != null">
+				AND type like concat('%',#{type},'%')
+			</if>
+			<if test="status != null">
+				AND status=#{status}
+			</if>
+		</where>
+		order by id desc
+	</select>
+	
+	<select id="getTaskCount" parameterType="java.util.HashMap" resultType="int">
+		select count(1) from PAS_TASK 
+		<where>
+			<if test="id!=null">
+				id like concat('%',#{id},'%')
+			</if>
+			<if test="type!=null">
+			 AND type like concat('%',#{type},'%')
+			</if>
+			<if test="status!=null">
+			 AND status=#{status}
+			</if>
+		</where>
+	</select>
+
+
+	<update id="updateTask" parameterType="Task">
+			UPDATE PAS_TASK 
+			<set>
+				<if test="type!=null">type=#{type},</if>
+				<if test="status!=null">status=#{status},</if> 
+				<if test="timeout!=null">timeout=#{timeout},</if>
+				<if test="startTime!=null">startTime=#{startTime},</if>
+				<if test="finalTime!=null">finalTime=#{finalTime},</if>
+				<if test="finishTime!=null">finishTime=#{finishTime},</if>
+				<if test="exceptionTime!=null">exceptionTime=#{exceptionTime},</if>
+				<if test="abortTime!=null">abortTime=#{abortTime},</if>
+				<if test="handleResult!=null">handleResult=#{handleResult},</if>
+				<if test="exception!=null">exception=#{exception},</if>
+				<if test="owner!=null">owner=#{owner}</if>
+			</set>
+			WHERE id=#{id}
+	</update>
+	
+	<delete id="delTaskById" parameterType="java.lang.String">
+		DELETE FROM PAS_TASK WHERE id in ( #{id} )
+	</delete>
+	
+</mapper>

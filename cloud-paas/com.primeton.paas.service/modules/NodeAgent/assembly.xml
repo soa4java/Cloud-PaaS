@@ -1,0 +1,33 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+	<id>release</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<fileSets>
+		<fileSet>
+			<directory>../../src/main/services/NodeAgent/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+			<fileMode>711</fileMode>
+			<lineEnding>unix</lineEnding>
+			<excludes>
+				<exclude>*.formatted</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet>
+			<directory>../../src/main/services/NodeAgent/packages</directory>
+			<outputDirectory>packages</outputDirectory>
+		</fileSet>
+	</fileSets>
+	<!-- NodeAgent function extends jar -->
+	<files>
+		<file>
+			<source>../../../com.primeton.paas.cesium.agent/target/com.primeton.paas.cesium.agent-${paas.version}.jar</source>
+			<outputDirectory>packages/etc/agent-java/lib</outputDirectory>
+		</file>
+	</files>
+
+</assembly>  

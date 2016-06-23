@@ -1,0 +1,6 @@
+com.primeton.paas.manage.api.impl.manager.DefaultClusterManager
+com.primeton.paas.manage.api.impl.manager.HaProxyClusterManager
+com.primeton.paas.manage.api.impl.manager.NginxClusterManager
+com.primeton.paas.manage.api.impl.manager.JettyClusterManager
+com.primeton.paas.manage.api.impl.manager.TomcatClusterManager
+com.primeton.paas.manage.api.impl.manager.EsbClusterManager

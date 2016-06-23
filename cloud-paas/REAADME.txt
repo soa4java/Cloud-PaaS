@@ -1,0 +1,3 @@
+mvn clean package -Dmaven.test.skip=true -Dpaas.version=1.0.0 -Dbuild.version=1.0.0
+
+mvn clean install -Dmaven.test.skip=true -Dpaas.version=1.0.0 -Dbuild.version=1.0.0

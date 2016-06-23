@@ -1,0 +1,2 @@
+com.primeton.paas.openapi.invoker.BankCardQueryInvoker#priority=100
+com.primeton.paas.openapi.invoker.SmsSenderInvoker#priority=100

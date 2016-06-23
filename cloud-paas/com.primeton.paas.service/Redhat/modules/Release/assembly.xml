@@ -1,0 +1,180 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+	<id>release</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<files>
+		<!-- service install packages -->
+		<file>
+			<source>../HaProxy/target/HaProxy.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../Keepalived/target/Keepalived.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../Memcached/target/Memcached.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../MySQL/target/MySQL.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../Nginx/target/Nginx.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../Redis/target/Redis.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../RedisSentinel/target/RedisSentinel.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../SVN/target/SVN.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../Gateway/target/Gateway.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../PhpMyAdmin/target/PhpMyAdmin.zip</source>
+			<outputDirectory>system</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/CEPEngine/target/CEPEngine.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/Collector/target/Collector.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/Common/target/Common.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/Common/target/Common.zip</source>
+			<outputDirectory>system</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/EsbServer/target/EsbServer.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/EsbSSM/target/EsbSSM.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/EsbSAM/target/EsbSAM.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/EsbConsole/target/EsbConsole.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/Hadoop/target/Hadoop.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/Jetty/target/Jetty.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/JobCtrl/target/JobCtrl.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/Mail/target/Mail.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/OpenAPI/target/OpenAPI.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/SVNRepository/target/SVNRepository.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/Tomcat/target/Tomcat.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<file>
+			<source>../../../modules/MsgQueue/target/MsgQueue.zip</source>
+			<outputDirectory>services</outputDirectory>
+		</file>
+		<!-- NodeAgent -->
+		<file>
+			<source>../../../modules/NodeAgent/target/NodeAgent.zip</source>
+			<outputDirectory>system</outputDirectory>
+		</file>
+		<!-- console app and platform -->
+		<file>
+			<source>../../../modules/Console/target/Console.zip</source>
+			<outputDirectory>system</outputDirectory>
+		</file>
+		<!-- Naming service -->
+		<file>
+			<source>../../../modules/Zookeeper/target/Zookeeper.zip</source>
+			<outputDirectory>system</outputDirectory>
+		</file>
+		<!-- Platform message bus service -->
+		<file>
+			<source>../../../modules/Rabbitmq/target/Rabbitmq.zip</source>
+			<outputDirectory>system</outputDirectory>
+		</file>
+		<!-- Repository center -->
+		<file>
+			<source>../../../modules/Repository/target/Repository.zip</source>
+			<outputDirectory>system</outputDirectory>
+		</file>
+		<!-- Console etc initialize database scripts -->
+		<file>
+			<source>../../../modules/dbscripts/target/dbscripts.zip</source>
+			<outputDirectory>system</outputDirectory>
+		</file>
+		<!-- PAAS Cloud WEB application development template war -->
+		<file>
+			<source>../../../../com.primeton.paas.app.template/target/template.war</source>
+			<outputDirectory>develop</outputDirectory>
+		</file>
+		<!-- PAAS Cloud Web Application example WAR -->
+		<file>
+			<source>../../../../com.primeton.paas.app.example/target/example.war</source>
+			<outputDirectory>example</outputDirectory>
+		</file>
+		<!-- Develop javadoc -->
+		<file>
+			<source>../../../src/main/develop/docs/apidocs.jar</source>
+			<outputDirectory>develop</outputDirectory>
+		</file>
+	</files>
+	
+	<fileSets>
+		<!-- PAAS Platform Documents -->
+		<fileSet>
+			<directory>../../../src/main/documents</directory>
+			<outputDirectory>documents</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>../../../src/main/3rd/jdk</directory>
+			<outputDirectory>jdk</outputDirectory>
+			<fileMode>711</fileMode>
+		</fileSet>
+		<fileSet>
+			<directory>../../../src/main/etc</directory>
+			<outputDirectory>etc</outputDirectory>
+		</fileSet>
+	</fileSets>
+
+</assembly>  

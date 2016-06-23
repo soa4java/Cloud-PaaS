@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.primeton</groupId>
+		<artifactId>paas</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<groupId>com.primeton.paas</groupId>
+	<artifactId>com.primeton.paas.service</artifactId>
+	<packaging>pom</packaging>
+	
+	<modules>
+		<module>modules/CardBin/pom.xml</module>
+		<module>modules/CEPEngine/pom.xml</module>
+		<module>modules/Collector/pom.xml</module>
+		<module>modules/Common/pom.xml</module>
+		<module>modules/Console/pom.xml</module>
+		<module>modules/EsbServer/pom.xml</module>
+		<module>modules/EsbSSM/pom.xml</module>
+		<module>modules/EsbSAM/pom.xml</module>
+		<module>modules/EsbConsole/pom.xml</module>
+		<module>modules/Hadoop/pom.xml</module>
+		<module>modules/HaProxy/pom.xml</module>
+		<module>modules/Jetty/pom.xml</module>
+		<module>modules/JobCtrl/pom.xml</module>
+		<module>modules/Keepalived/pom.xml</module>
+		<module>modules/Mail/pom.xml</module>
+		<module>modules/Memcached/pom.xml</module>
+		<module>modules/MsgQueue/pom.xml</module>
+		<module>modules/MySQL/pom.xml</module>
+		<module>modules/Nginx/pom.xml</module>
+		<module>modules/NodeAgent/pom.xml</module>
+		<module>modules/OpenAPI/pom.xml</module>
+		<module>modules/Redis/pom.xml</module>
+		<module>modules/RedisSentinel/pom.xml</module>
+		<module>modules/SMS/pom.xml</module>
+		<module>modules/SVN/pom.xml</module>
+		<module>modules/SVNRepository/pom.xml</module>
+		<module>modules/Tomcat/pom.xml</module>
+		<module>modules/Gateway/pom.xml</module>
+		<!-- PhpMyAdmin -->
+		<module>modules/PhpMyAdmin/pom.xml</module>
+		<!-- Naming service -->
+		<module>modules/Zookeeper/pom.xml</module>
+		<!-- Platform message bus -->
+		<module>modules/Rabbitmq/pom.xml</module>
+		<!-- Repository for service center -->
+		<module>modules/Repository/pom.xml</module>
+		<!-- Database scripts -->
+		<module>modules/dbscripts/pom.xml</module>
+		<!-- Product release SUSE/Redhat/Ubuntu -->
+		<module>modules/Release/pom.xml</module>
+		<module>Redhat/pom.xml</module>
+		<module>Ubuntu/pom.xml</module>
+	</modules>
+	
+</project>

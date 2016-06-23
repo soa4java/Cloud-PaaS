@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stretchSqlMap">
+	<!-- 
+		<typeAlias alias="stretchStrategy" type="com.primeton.paas.manage.api.app.StretchStrategy"/>
+		<typeAlias alias="strategyItem" type="com.primeton.paas.manage.api.app.StrategyItem"/>
+	 -->
+
+	<insert id="addStrategy" parameterType="StretchStrategy">
+		INSERT INTO PAS_STRETCH_STRATEGY (STRATEGY_NAME, STRATEGY_TYPE, ISENABLE, STRETCH_SIZE, CONTINUED_TIME, IGNORE_TIME)
+		VALUES(#{strategyName},#{strategyType},#{isEnable},#{stretchSize},#{continuedTime},#{ignoreTime})
+	</insert> 
+	
+	<insert id="addStrategyItem" parameterType="StrategyItem">
+		INSERT INTO PAS_STRETCH_STRATEGY_ITEM (STRATEGY_NAME, STRATEGY_TYPE, ITEM_TYPE, THRESHOLD)
+		VALUES(#{strategyName},#{strategyType},#{itemType},#{threshold})
+	</insert> 
+	
+	<insert id="addAppStrategyRel" parameterType="StretchStrategy">
+		INSERT INTO PAS_APP_STRETCH_STRATEGY(APP_NAME,STRATEGY_NAME)
+		VALUES(#{appName},#{strategyName})
+	</insert> 	
+
+	<update id="updateAppStrategyRel" parameterType="StretchStrategy">
+		UPDATE PAS_APP_STRETCH_STRATEGY 
+		SET	STRATEGY_NAME = #{strategyName}
+		WHERE APP_NAME=#{appName}
+	</update>
+	
+	<update id="updateStrategy" parameterType="StretchStrategy">
+		UPDATE PAS_STRETCH_STRATEGY 
+		<set>
+			<if test="isEnable !=null">isEnable = #{isEnable}</if>			
+			<if test="stretchSize !=null and stretchSize>0">,stretch_size = #{stretchSize}</if> 			
+			<if test="continuedTime !=null and continuedTime>0">,continued_time = #{continuedTime}</if>
+			<if test="ignoreTime !=null and ignoreTime>0">,ignore_time = #{ignoreTime}</if>			
+		</set>
+		WHERE STRATEGY_NAME = #{strategyName}
+		AND strategy_type = #{strategyType}
+	</update>
+	
+	<update id="updateStrategyItem" parameterType="StrategyItem">
+		UPDATE PAS_STRETCH_STRATEGY_ITEM t
+		SET t.threshold = #{threshold}
+		WHERE t.strategy_name = #{strategyName}
+		<if test="strategyType !=null">
+			AND t.strategy_type = #{strategyType}
+		</if>
+		<if test="itemType !=null">
+			AND t.item_type = #{itemType}
+		</if>		
+	</update>
+		
+	<select id="queryStrategyItems" parameterType="java.util.HashMap" resultType="StrategyItem">
+		SELECT t.item_type itemType, t.threshold as threshold
+		FROM  PAS_APP_STRETCH_STRATEGY r, PAS_STRETCH_STRATEGY_ITEM t
+		WHERE r.strategy_name = t.strategy_name
+		<if test="appName !=null">
+			AND r.app_name = #{appName}
+		</if>
+		
+		<if test="strategyType !=null">
+			AND t.strategy_type = #{strategyType}
+		</if>
+		<if test="itemType !=null">
+			AND t.item_type = #{itemType}
+		</if>		
+	</select>
+	
+	<select id="queryStrategy" parameterType="java.util.HashMap" resultType="StretchStrategy">
+		SELECT r.app_name appName, p.strategy_name strategyName, p.strategy_type strategyType,
+			   p.isEnable isEnable ,p.stretch_size stretchSize,
+			   p.ignore_time ignoreTime, p.continued_time continuedTime
+		FROM  PAS_APP_STRETCH_STRATEGY r,PAS_STRETCH_STRATEGY p
+		
+		WHERE r.strategy_name = p.strategy_name
+		<if test="appName !=null">
+			AND r.app_name = #{appName}
+		</if>
+			
+		<if test="strategyType !=null">
+			AND	p.strategy_type=#{strategyType}
+		</if>
+	</select>	
+	
+	
+	<delete id="removeStrategyItems" parameterType="java.util.HashMap">
+		DELETE FROM pas_stretch_strategy_item 
+		WHERE strategy_name in ( select strategy_name from pas_app_stretch_strategy where app_name =  #{appName} )
+
+		<if test="strategyType !=null">
+			AND strategy_type = #{strategyType}
+		</if>
+	</delete>
+	
+	<delete id="removeStrategy" parameterType="java.util.HashMap">
+		DELETE FROM PAS_STRETCH_STRATEGY 
+		WHERE strategy_name in ( 
+			select strategy_name from pas_app_stretch_strategy where app_name =  #{appName} )
+			
+		<if test="strategyType !=null">
+			AND strategy_type = #{strategyType}
+		</if>
+	</delete>
+	
+	<delete id="removeAppStrategyRel" parameterType="java.lang.String">
+		DELETE FROM pas_app_stretch_strategy WHERE app_name = #{appName}
+	</delete>
+	
+	
+	<select id="getAppsByStrategyName" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT r.app_name appName
+		FROM  PAS_APP_STRETCH_STRATEGY r
+		
+		WHERE r.app_name != #{value}
+		AND r.strategy_name = #{value}
+	</select>	
+	
+	<select id="getStrategyCont" parameterType="StretchStrategy" resultType="int">
+		SELECT count(1) 
+		FROM PAS_APP_STRETCH_STRATEGY r 
+		<where>
+			<if test="appName !=null">
+				r.app_name like concat('%',#{appName},'%')    
+			</if>
+			
+			<if test="strategyName !=null">
+				AND r.strategy_name like concat('%',#{strategyName},'%')    
+			</if>
+		</where>
+	</select>
+	
+	<select id="getStrategys" parameterType="StretchStrategy" resultType="StretchStrategy">
+		SELECT r.app_name appName, r.strategy_name strategyName
+		FROM PAS_APP_STRETCH_STRATEGY r 
+		<where>
+			<if test="appName !=null">
+				r.app_name like concat('%',#{appName},'%')    
+			</if>
+			
+			<if test="strategyName !=null">
+				AND r.strategy_name like concat('%',#{strategyName},'%')    
+			</if>
+		</where>
+	</select>
+</mapper>

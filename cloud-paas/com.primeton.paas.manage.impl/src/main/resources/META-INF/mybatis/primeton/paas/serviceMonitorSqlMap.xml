@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="serviceMonitorSqlMap">
+
+	<insert id="insert" parameterType="java.util.Map">
+		INSERT INTO pas_service_monitor (id
+			<if test="clusterId !=null">, clusterId</if>
+			<if test="occur_time !=null">, occur_time</if>
+		
+			<if test="cpu_us !=null">, cpu_us</if>
+			<if test="cpu_sy !=null">, cpu_sy</if>
+			<if test="cpu_ni !=null">, cpu_ni</if>
+			<if test="cpu_id !=null">, cpu_id</if>
+			<if test="cpu_wa !=null">, cpu_wa</if>
+			<if test="cpu_hi !=null">, cpu_hi</if>
+			<if test="cpu_si !=null">, cpu_si</if>
+			<if test="cpu_st !=null">, cpu_st</if>
+			<if test="cpu_oneload !=null">, cpu_oneload</if>
+			<if test="cpu_fiveload !=null">, cpu_fiveload</if>
+			<if test="cpu_fifteenload !=null">, cpu_fifteenload</if>
+			
+			<if test="mem_total !=null">, mem_total</if>
+			<if test="mem_used !=null">, mem_used</if>
+			<if test="mem_free !=null">, mem_free</if>
+			<if test="mem_buffers !=null">, mem_buffers</if>
+			<if test="mem_us !=null">, mem_us</if>
+			
+			<if test="io_si !=null">, io_si</if>
+			<if test="io_so !=null">, io_so</if>
+			<if test="io_bi !=null">, io_bi</if>
+			<if test="io_bo !=null">, io_bo</if>
+		) VALUES (#{id}
+			<if test="clusterId !=null">, #{clusterId}</if>
+			<if test="occur_time !=null">, #{occur_time}</if>
+		
+			<if test="cpu_us !=null">, #{cpu_us}</if>
+			<if test="cpu_sy !=null">, #{cpu_sy}</if>
+			<if test="cpu_ni !=null">, #{cpu_ni}</if>
+			<if test="cpu_id !=null">, #{cpu_id}</if>
+			<if test="cpu_wa !=null">, #{cpu_wa}</if>
+			<if test="cpu_hi !=null">, #{cpu_hi}</if>
+			<if test="cpu_si !=null">, #{cpu_si}</if>
+			<if test="cpu_st !=null">, #{cpu_st}</if>
+			<if test="cpu_oneload !=null">, #{cpu_oneload}</if>
+			<if test="cpu_fiveload !=null">, #{cpu_fiveload}</if>
+			<if test="cpu_fifteenload !=null">, #{cpu_fifteenload}</if>
+			
+			<if test="mem_total !=null">, #{mem_total}</if>
+			<if test="mem_used !=null">, #{mem_used}</if>
+			<if test="mem_free !=null">, #{mem_free}</if>
+			<if test="mem_buffers !=null">, #{mem_buffers}</if>
+			<if test="mem_us !=null">, #{mem_us}</if>
+			
+			<if test="io_si !=null">, #{io_si}</if>
+			<if test="io_so !=null">, #{io_so}</if>
+			<if test="io_bi !=null">, #{io_bi}</if>
+			<if test="io_bo !=null">, #{io_bo}</if>
+		)
+	</insert>
+	
+	<select id="select" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT * FROM pas_service_monitor
+		<where>
+			<if test="clusterId !=null">
+				clusterId=#{clusterId}
+			</if>
+		</where>
+		 ORDER BY occur_time desc limit 1
+	</select>
+	
+	<delete id="delete" parameterType="java.util.HashMap">
+		DELETE FROM pas_service_monitor
+		<where>
+			<if test="begin !=null">
+				occur_time >=#{begin}
+			</if>
+			<if test="end !=null">
+				AND occur_time &lt;=#{end}
+			</if>
+		</where>
+	</delete>
+	
+</mapper>

@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.primeton.paas.build</groupId>
+	<artifactId>Redhat</artifactId>
+	<name>Redhat</name>
+	<version>${build.version}</version>
+	<packaging>pom</packaging>
+	<description>PAAS support Redhat Enterprise OS</description>
+	
+	<modules>
+		<module>modules/HaProxy/pom.xml</module>
+		<module>modules/Keepalived/pom.xml</module>
+		<module>modules/Memcached/pom.xml</module>
+		<module>modules/MySQL/pom.xml</module>
+		<module>modules/Nginx/pom.xml</module>
+		<module>modules/Redis/pom.xml</module>
+		<module>modules/RedisSentinel/pom.xml</module>
+		<module>modules/SVN/pom.xml</module>
+		<module>modules/Gateway/pom.xml</module>
+		<module>modules/PhpMyAdmin/pom.xml</module>
+		<!-- Redhat -->
+		<module>modules/Release/pom.xml</module>
+	</modules>
+	
+</project>

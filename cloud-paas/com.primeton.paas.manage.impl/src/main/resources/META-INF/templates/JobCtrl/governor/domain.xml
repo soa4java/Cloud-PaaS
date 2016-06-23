@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain name="PrimetonDomain" timestamp="1367891000687" interval="5000"
+	timeout="5000" adminServerIP="$localhost" adminServerPort="$adminPort"
+	adminAppName="primetonJobCtrl">
+	<servers>
+		<server ip="$localhost" jndiPort="0" httpPort="$port" adminPort="$adminPort"
+			appName="primetonJobCtrl" isSynchronized="true" name="server_${localhost}_$adminPort"
+			type="tomcat" />
+	</servers>
+	<groups />
+</domain>

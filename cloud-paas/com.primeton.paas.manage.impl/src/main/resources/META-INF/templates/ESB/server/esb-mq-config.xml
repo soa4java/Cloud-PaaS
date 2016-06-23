@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Author: ZhongWen.Li (mailto:lizw@primeton.com) -->
+<!-- Generate by Velocity template -->
+
+<beans xmlns="http://www.primeton.com/schema/beans" xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.primeton.com/schema/beans http://www.primeton.com/schema/beans/spring-beans-2.0.xsd   http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+	<broker xmlns="http://activemq.apache.org/schema/core"
+		deleteAllMessagesOnStartup="false" persistent="true" useJmx="true"
+		dataDirectory="../EOS/_srv/work/mq_data">
+
+		<!-- Default Auto Create Destination Setup By Broker Starting -->
+		<!-- <destinations> 
+			     <queue physicalName="Queue.DefaultQueue" /> 
+			     <topic physicalName="Topic.DefaultTopic" /> 
+		     </destinations> 
+		 -->
+
+		<managementContext>
+			<managementContext createConnector="true" connectorPort="${managePort}" />
+		</managementContext>
+
+		<persistenceAdapter>
+			<amqPersistenceAdapter />
+		</persistenceAdapter>
+
+		<transportConnectors>
+			<transportConnector name="openwire" uri="tcp://0.0.0.0:${port}" />
+			<!-- 
+			<transportConnector name="openwire" uri="tcp://localhost:61616" discoveryUri="multicast://default"/> 
+			<transportConnector name="ssl" uri="ssl://localhost:61617"/> 
+			<transportConnector name="stomp" uri="stomp://localhost:61613"/> 
+			<transportConnector name="xmpp" uri="xmpp://localhost:61222"/> 
+			-->
+		</transportConnectors>
+
+		<destinationPolicy>
+			<policyMap>
+				<policyEntries>
+					<policyEntry queue=">" producerFlowControl="false"
+						memoryLimit="52mb">
+						<dispatchPolicy>
+							<strictOrderDispatchPolicy />
+						</dispatchPolicy>
+						<deadLetterStrategy>
+							<individualDeadLetterStrategy
+								queuePrefix="PRIMETON.QUEUE.DLQ." processNonPersistent="true" />
+						</deadLetterStrategy>
+						<pendingQueuePolicy>
+							<vmQueueCursor />
+						</pendingQueuePolicy>
+					</policyEntry>
+					<policyEntry topic=">" producerFlowControl="true"
+						memoryLimit="52mb">
+						<dispatchPolicy>
+							<strictOrderDispatchPolicy />
+						</dispatchPolicy>
+						<deadLetterStrategy>
+							<individualDeadLetterStrategy
+								topicPrefix="PRIMETON.TOPIC.DLQ." processNonPersistent="true" />
+						</deadLetterStrategy>
+						<pendingQueuePolicy>
+							<vmQueueCursor />
+						</pendingQueuePolicy>
+					</policyEntry>
+				</policyEntries>
+			</policyMap>
+		</destinationPolicy>
+
+		<systemUsage>
+			<systemUsage>
+				<memoryUsage sendFailIfNoSpaceAfterTimeout="3000">
+					<memoryUsage limit="256mb" />
+				</memoryUsage>
+				<storeUsage>
+					<storeUsage limit="128gb" />
+				</storeUsage>
+				<tempUsage>
+					<tempUsage limit="128gb" />
+				</tempUsage>
+			</systemUsage>
+		</systemUsage>
+
+		<!-- Print More Detail About Log In Console -->
+	</broker>
+</beans>

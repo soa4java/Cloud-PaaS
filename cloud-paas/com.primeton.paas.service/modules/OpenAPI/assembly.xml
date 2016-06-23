@@ -1,0 +1,37 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+	<id>release</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<fileSets>
+		<fileSet>
+			<directory>../../src/main/services/OpenAPI/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+			<fileMode>711</fileMode>
+			<lineEnding>unix</lineEnding>
+			<excludes>
+				<exclude>*.formatted</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet>
+			<directory>../../src/main/services/OpenAPI/instances</directory>
+			<outputDirectory>instances</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>../../src/main/services/OpenAPI/packages</directory>
+			<outputDirectory>packages</outputDirectory>
+		</fileSet>
+	</fileSets>
+	
+	<files>
+		<file>
+			<source>../../../com.primeton.paas.openapi.template/target/default.war</source>
+			<outputDirectory>packages/java</outputDirectory>
+		</file>
+	</files>
+
+</assembly>  

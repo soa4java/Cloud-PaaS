@@ -1,0 +1,21 @@
+﻿[
+	{menuId: "base", menuName: "Base"},
+	
+	{menuId: "ajax", menuName: "Ajax", parentMenuId: "base"},
+	{menuId: "json", menuName: "JSON", parentMenuId: "base"},
+	{menuId: "date", menuName: "Date", parentMenuId: "base", checked: true},
+	{menuId: "control", menuName: "Control", parentMenuId: "base"},
+
+	{menuId: "forms", menuName: "Forms", parentMenuId: "base"},
+	
+	{menuId: "button", menuName: "Button", parentMenuId: "forms"},
+	{menuId: "listbox", menuName: "ListBox", parentMenuId: "forms"},
+	{menuId: "checkboxlist", menuName: "CheckBoxList", parentMenuId: "forms"},
+	
+	{menuId: "lists", menuName: "Lists"},
+	
+	{menuId: "datagrid", menuName: "DataGrid", parentMenuId: "lists"},			
+	{menuId: "tree", menuName: "Tree", parentMenuId: "lists"},
+	{menuId: "treegrid", menuName: "TreeGrid ", parentMenuId: "lists"}
+
+]

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd  
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd  
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- JDBC Connection configuration properties -->
+	<context:property-placeholder location="classpath:db.properties" ignore-unresolvable="true"/>
+	<!-- DataSource -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${db.driverClass}" />
+		<property name="jdbcUrl" value="${db.jdbcUrl}" />
+		<property name="user" value="${db.user}" />
+		<property name="password" value="${db.password}" />
+		<property name="minPoolSize" value="${c3p0.minPoolSize}" />
+		<property name="maxPoolSize" value="${c3p0.maxPoolSize}" />
+		<property name="initialPoolSize" value="${c3p0.initialPoolSize}" />
+		<property name="maxIdleTime" value="${c3p0.maxIdleTime}" />
+		<property name="idleConnectionTestPeriod" value="${c3p0.idleConnectionTestPeriod}" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	    <tx:attributes>
+	        <tx:method name="save*" propagation="REQUIRED" />
+	        <tx:method name="add*" propagation="REQUIRED" />
+	        <tx:method name="create*" propagation="REQUIRED" />
+	        <tx:method name="insert*" propagation="REQUIRED" />
+	        <tx:method name="update*" propagation="REQUIRED" />
+	        <tx:method name="merge*" propagation="REQUIRED" />
+	        <tx:method name="del*" propagation="REQUIRED" />
+	        <tx:method name="remove*" propagation="REQUIRED" />
+	        <tx:method name="destroy*" propagation="REQUIRED" />
+	        <tx:method name="put*" propagation="REQUIRED" />
+	        <tx:method name="use*" propagation="REQUIRED"/>
+	        <tx:method name="get*" propagation="REQUIRED" read-only="true" />
+	        <tx:method name="count*" propagation="REQUIRED" read-only="true" />
+	        <tx:method name="find*" propagation="REQUIRED" read-only="true" />
+	        <tx:method name="list*" propagation="REQUIRED" read-only="true" />
+	        <tx:method name="query*" propagation="REQUIRED" read-only="true" />
+	        <tx:method name="*" read-only="true" />
+	    </tx:attributes>
+	</tx:advice>
+	
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean" >
+        <property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+        <property name="targetMethod" value="initLogging" />
+        <property name="arguments">
+            <list>
+                <value>classpath:log4j.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="BeanFactory" class="com.primeton.paas.manage.api.impl.spring.SpringApplicationContext" />
+    
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation">
+            <value>classpath:META-INF/mybatis/sqlMapConf.xml</value>
+        </property>
+        <property name="dataSource">
+            <ref bean="dataSource" />
+        </property>
+    </bean>
+
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory" />
+    </bean>
+  	
+</beans>

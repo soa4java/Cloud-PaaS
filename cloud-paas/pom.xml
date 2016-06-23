@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.primeton</groupId>
+	<artifactId>paas</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>com.primeton.paas.console</module>
+		<module>com.primeton.paas.app</module>
+		<module>com.primeton.paas.app.config</module>
+		<module>com.primeton.paas.app.template</module>
+		<module>com.primeton.paas.app.example</module>
+		<module>com.primeton.paas.cardbin.client</module>
+		<module>com.primeton.paas.cardbin.common</module>
+		<module>com.primeton.paas.cardbin.server</module>
+		<module>com.primeton.paas.manage.api</module>
+		<module>com.primeton.paas.manage.impl</module>
+		<module>com.primeton.paas.openapi.admin</module>
+		<module>com.primeton.paas.openapi.base</module>
+		<module>com.primeton.paas.openapi.engine</module>
+		<module>com.primeton.paas.openapi.flowcontrol</module>
+		<module>com.primeton.paas.openapi.invoker</module>
+		<module>com.primeton.paas.openapi.msgreduce</module>
+		<module>com.primeton.paas.openapi.security</module>
+		<module>com.primeton.paas.openapi.template</module>
+		<module>com.primeton.paas.exception</module>
+		<module>com.primeton.paas.common</module>
+		<module>com.primeton.paas.mail.model</module>
+		<module>com.primeton.paas.mail.server</module>
+		<module>com.primeton.paas.sms.client</module>
+		<module>com.primeton.paas.sms.common</module>
+		<module>com.primeton.paas.sms.server</module>
+		<module>com.primeton.paas.collect.common</module>
+		<module>com.primeton.paas.collect.server</module>
+		<module>com.primeton.paas.cep.engine</module>
+		<module>com.primeton.paas.cep.manager</module>
+		<module>com.primeton.paas.cep.model</module>
+		<module>com.primeton.paas.openapi.httpin</module>
+		<module>com.primeton.upcloud.ws</module>
+		<module>com.primeton.paas.cesium.agent</module>
+		<module>com.primeton.paas.rr</module>
+		<module>com.primeton.paas.service</module>
+	</modules>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	<organization>
+		<name>Primeton Software</name>
+		<url>http://www.primeton.com</url>
+	</organization>
+</project>

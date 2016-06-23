@@ -1,0 +1,81 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <_tns_:queryVMJobResponse xmlns:_tns_="http://www.unionpay.com/ResourceService">
+         <ns1:out1 xmlns:ns1="http://www.unionpay.com/ResourceService">
+            <ns2:jobID xmlns:ns2="http://response.api.service.cloud.primeton.com">2013092913570640</ns2:jobID>
+            <ns2:jobStatus xmlns:ns2="http://response.api.service.cloud.primeton.com">SUCCESS</ns2:jobStatus>
+            <ns2:message xmlns:ns2="http://response.api.service.cloud.primeton.com">Task status is success.</ns2:message>
+            <ns2:responseMessage xmlns:ns2="http://response.api.service.cloud.primeton.com">Query job status complete.</ns2:responseMessage>
+            <ns2:responseStatus xmlns:ns2="http://response.api.service.cloud.primeton.com">OK</ns2:responseStatus>
+            <ns2:vmList xmlns:ns2="http://response.api.service.cloud.primeton.com">
+               <ns3:VServer xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">
+                  <ns3:attribute1 ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:attribute10 ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:attribute2 ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:attribute3 ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:attribute4 ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:attribute5 ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:attribute6 ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:attribute7 ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:attribute8 ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:attribute9 ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:bizzone ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:cloudStatus>RUNNING</ns3:cloudStatus>
+                  <ns3:cloudstatus ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:cpuCores>2</ns3:cpuCores>
+                  <ns3:cpuSpeed>100</ns3:cpuSpeed>
+                  <ns3:cpuUsageRate ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:createBy>paas</ns3:createBy>
+                  <ns3:createOn>2013-09-29T13:57:04+08:00</ns3:createOn>
+                  <ns3:description ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:disk>0.000</ns3:disk>
+                  <ns3:diskUsageRate ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:fkPkGroup>2013092910453189</ns3:fkPkGroup>
+                  <ns3:fkPkHw>2012090100000007</ns3:fkPkHw>
+                  <ns3:fkPkImage>2013091610291285</ns3:fkPkImage>
+                  <ns3:fkPkLocation>2013091610272968</ns3:fkPkLocation>
+                  <ns3:fkPkOrderVscItem>2013092913570443</ns3:fkPkOrderVscItem>
+                  <ns3:fkPkPserver>2013091610280445</ns3:fkPkPserver>
+                  <ns3:fkPkTemplate>2013091610291357</ns3:fkPkTemplate>
+                  <ns3:hostname>suse11sp2</ns3:hostname>
+                  <ns3:locationName ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:loginPort ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:memUsageRate ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:metadata ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:modifyBy>paas</ns3:modifyBy>
+                  <ns3:modifyOn>2013-09-29T13:57:04+08:00</ns3:modifyOn>
+                  <ns3:name>9YIMMHQY9K_4869102573</ns3:name>
+                  <ns3:netSeg ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:onHostId ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:onHostName ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:openComments ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:orderQuantity ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:osName ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:owner>paas</ns3:owner>
+                  <ns3:ownerOrg>upcloud</ns3:ownerOrg>
+                  <ns3:pkOrderVscreation ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:pkVserver>2013092913570446</ns3:pkVserver>
+                  <ns3:privateNetAddress>192.168.100.30</ns3:privateNetAddress>
+                  <ns3:processStatus>OK</ns3:processStatus>
+                  <ns3:providerGroup ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:providerId>ef4d3a41-60e4-4395-8b34-1552d6271035</ns3:providerId>
+                  <ns3:pserverName ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:ram>2048</ns3:ram>
+                  <ns3:remark ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:scaleIp ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:status ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:success>true</ns3:success>
+                  <ns3:tags>SCALE</ns3:tags>
+                  <ns3:teanantzone ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:type ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+                  <ns3:uniqueId>RegionOne/ef4d3a41-60e4-4395-8b34-1552d6271035</ns3:uniqueId>
+                  <ns3:uniqueIdHw>RegionOne/7</ns3:uniqueIdHw>
+                  <ns3:uniqueIdImage>RegionOne/626e3647-639f-41f6-bd6e-9bf1532f47c2</ns3:uniqueIdImage>
+                  <ns3:uniqueIdLocation>RegionOne</ns3:uniqueIdLocation>
+                  <ns3:uri ns4:nil="true" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               </ns3:VServer>
+            </ns2:vmList>
+         </ns1:out1>
+      </_tns_:queryVMJobResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

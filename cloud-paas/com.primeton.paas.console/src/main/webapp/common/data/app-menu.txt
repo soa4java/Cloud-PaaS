@@ -1,0 +1,27 @@
+﻿[
+	{ id: "app", text: "自助服务平台"},
+	{ id: "appOpen", text: "应用开通",pid: "app"},
+	{ id: "myOrderMgr", pid: "appOpen", text: "我的订单", iconCls: "app_myOrder", url: "../app/open/order/myOrderMgr.jsp" },
+	{ id: "myApplications", pid: "appOpen", text: "我的应用", iconCls: "app_myApp", url: "../app/open/application/myAppMgr.jsp" },
+	{ id: "myServices", pid: "appOpen", text: "我的服务", iconCls: "app_myServices", url: "../app/open/service/myServicesMgr.jsp" },
+		
+	{ id: "appManage", text: "应用管理",pid: "app"},
+	{ id: "listApplications_deploy", pid: "appManage", text: "应用部署", iconCls: "app_deployApp", url: "../app/mgr/deploy/listApplications.jsp" },
+	{ id: "listApplications_control", pid: "appManage", text: "应用控制", iconCls: "app_controlApp", url: "../app/mgr/control/listApplications.jsp" },
+	{ id: "appSetting", pid: "appManage", text: "应用设置", iconCls: "app_settingApp", url: "../app/mgr/setting/appSetting.jsp" },
+	{ id: "appCert", pid: "appManage", text: "应用证书", iconCls: "app_certApp", url: "../app/mgr/cert/appCert.jsp" },
+	
+	{ id: "monitor", text: "应用监控",pid: "app"},
+	{ id: "appMonitor", pid: "monitor", text: "监控状态", iconCls: "app_appMonitor", url: "../app/monitor/app/showAppMonitor.jsp" },
+	{ id: "appLog", pid: "monitor", text: "日志查看", iconCls: "app_appLog", url: "../app/monitor/logs/appLog.jsp" },
+	{ id: "appStretchStrategy", pid: "monitor", text: "伸缩策略", iconCls: "app_appStrategyConfig", url: "../app/monitor/stretch/appStrategyConfig.jsp" },
+	
+	{ id: "mysql", text: "数据库管理",pid: "app"},
+	{ id: "mySqlAdmin", pid: "mysql", text: "数据维护", iconCls: "app_mySqlAdmin", url: "../app/data/db/mySqlAdmin.jsp" },
+	
+	
+	{ id: "person", text: "个人信息",pid: "app"},
+	{ id: "updatePwd", pid: "person", text: "修改密码", iconCls: "app_updatePwd", url: "../app/account/update/updatePwd.jsp" },
+	{ id: "myAccount", pid: "person", text: "资料维护", iconCls: "app_myAccount", url: "../app/account/info/myAccount.jsp" }
+	
+]

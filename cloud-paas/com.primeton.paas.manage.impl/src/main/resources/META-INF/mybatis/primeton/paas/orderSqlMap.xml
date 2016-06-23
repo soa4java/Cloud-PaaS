@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orderSqlMap">
+	<!-- 
+		<typeAlias alias="Order" type="com.primeton.paas.manage.api.model.Order"/>
+		<typeAlias alias="OrderItem" type="com.primeton.paas.manage.api.model.OrderItem"/>
+		<typeAlias alias="ItemAttr" type="com.primeton.paas.manage.api.model.OrderItemAttr"/>
+	 -->
+	
+	<insert id="addOrder" parameterType="Order">
+		INSERT INTO PAS_ORDER(ORDER_ID ,ORDER_TYPE,ORDER_STATUS,SUBMIT_TIME,OWNER<if test="handleTime !=null">,HANDLE_TIME</if><if test="finishTime !=null">,FINISH_TIME</if><if test="beginTime !=null">,BEGIN_TIME</if><if test="endTime !=null">,END_TIME</if><if test="notes !=null">,NOTES</if>)
+		VALUES(#{orderId},#{orderType},#{orderStatus},now(),#{owner}<if test="handleTime !=null">,#{handleTime}</if><if test="finishTime !=null">,#{finishTime}</if><if test="beginTime !=null">,#{beginTime}</if><if test="endTime !=null">,#{endTime}</if><if test="notes !=null">#{notes}</if>)
+	</insert> 
+
+	<insert id="addOrderItems" parameterType="java.util.ArrayList">
+		INSERT INTO PAS_ORDER_ITEM(ITEM_ID,ORDER_ID,ITEM_TYPE) VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">(#{item.itemId},#{item.orderId},#{item.itemType})</foreach>
+	</insert>
+
+	<insert id="addItemAttrs" parameterType="java.util.ArrayList">
+		INSERT INTO PAS_ITEM_ATTR(ID, ITEM_ID,ATTR_NAME,ATTR_VALUE,DESCRIPTION) VALUES
+		<foreach collection="list" item="attrs" index="index" separator=",">(#{attrs.id},#{attrs.itemId},#{attrs.attrName},#{attrs.attrValue},#{attrs.description})</foreach>
+	</insert>
+
+	<delete id="delOrder" parameterType="java.lang.String">
+		DELETE FROM PAS_ORDER WHERE ORDER_ID  = #{orderId}
+	</delete>
+
+	<delete id="delOrderItems" parameterType="java.lang.String">
+		DELETE FROM PAS_ORDER_ITEM WHERE ORDER_ID = #{orderId}
+	</delete>
+	
+	<delete id="delItemAttrs" parameterType="java.lang.String">
+		DELETE FROM PAS_ITEM_ATTR 
+		WHERE ITEM_ID in (select item_id from PAS_ORDER_ITEM 
+						where order_id = #{orderId} )
+	</delete>
+	
+	<update id="updateOrder" parameterType="Order">
+		UPDATE PAS_ORDER 
+		 <set>
+      		<if test="orderType != null">ORDER_TYPE=#{orderType}</if>
+      		<if test="orderStatus != null">,ORDER_STATUS=#{orderStatus}</if>
+      		<if test="handleTime != null">,HANDLE_TIME=#{handleTime}</if>
+      		<if test="finishTime != null">,FINISH_TIME=#{finishTime}</if>
+      		<if test="handler != null">,HANDLER=#{handler}</if>
+      		<if test="notes != null">,NOTES=#{notes}</if>
+    	</set>
+		WHERE ORDER_ID=#{orderId}
+	</update>
+	
+	<select id="getOrderById" parameterType="java.lang.String" resultType="Order">
+		select  order_id orderId,
+		        order_type orderType, 
+		        order_status orderStatus,
+		        submit_time submitTime, 
+		        handle_time handleTime,
+		        finish_time finishTime,
+		        owner,handler,notes,
+		        begin_time beginTime,
+		        end_time endTime
+		from PAS_ORDER
+		where order_id = #{orderId}
+	</select>
+	
+	<select id="getItems" parameterType="java.lang.String" resultType="OrderItem">
+		select item_id itemId,order_id orderId,item_type itemType,item_status itemStatus,handle_time handleTime , finish_time finishTime
+		from PAS_ORDER_ITEM	
+		where order_id = #{orderId}
+	</select>
+	
+	<select id="getOrderItem" parameterType="java.lang.String" resultType="OrderItem">
+		select item_id itemId,order_id orderId,item_type itemType,item_status itemStatus,handle_time handleTime , finish_time finishTime
+			from PAS_ORDER_ITEM	
+		where item_id = #{itemId}
+	</select>
+	
+	<select id="getItemByType" parameterType="java.util.HashMap" resultType="OrderItem">
+		SELECT t.item_id itemId,t.order_id orderId,t.item_type itemType,t.item_status itemStatus,t.handle_time handleTime , t.finish_time finishTime
+		FROM pas_order p,pas_order_item t 
+		
+		WHERE p.order_id = t.order_id
+		and
+			p.order_id = #{orderId}
+		and
+			t.item_type= #{itemType}
+	</select>
+	
+	<select id="getAttrByName" parameterType="java.util.HashMap" resultType="ItemAttr">
+		SELECT r.id, r.item_id itemId,r.attr_name attrName,r.attr_value attrValue,r.description
+		FROM pas_order p,pas_order_item t ,pas_item_attr r 
+		WHERE p.order_id = t.order_id
+		AND t.item_id = r.item_id 
+		and
+			p.order_id = #{orderId}
+		and
+			t.item_type= #{itemType}
+		and
+			r.attr_name= #{attrName}
+	</select>
+	
+	<select id="getItemAttrs" parameterType="java.lang.String" resultType="ItemAttr">
+		select id, item_id itemId,attr_name attrName,attr_value attrValue,description
+		from PAS_ITEM_ATTR
+		where item_id = #{itemId}
+	</select>
+	
+	<select id="getOrderCount" parameterType="java.util.HashMap" resultType="int">
+		select count(1)
+		from PAS_ORDER
+		<where> 
+    		<if test="orderId != null">
+         		order_id like concat('%',#{orderId},'%')
+    		</if> 
+    		<if test="orderType != null and orderType!=''">
+        		AND order_type = #{orderType}
+    		</if>
+    		<if test="orderStatus !=null and orderStatus>0">
+        		AND order_status = #{orderStatus}
+    		</if>
+    		<if test="owner != null">
+        		AND owner like concat('%',#{owner},'%')
+    		</if>
+    		<if test="handler != null and handler!=''">
+        		AND handler like concat('%',#{handler},'%')
+    		</if>
+    		<if test="submitTimeBegin != null">
+        		AND <![CDATA[ DATE_FORMAT(submit_time, '%Y-%m-%d') >= DATE_FORMAT(#{submitTimeBegin}, '%Y-%m-%d') ]]> 
+    		</if>
+    		<if test="submitTimeEnd != null">
+        		AND <![CDATA[ DATE_FORMAT(submit_time, '%Y-%m-%d') <= DATE_FORMAT(#{submitTimeEnd}, '%Y-%m-%d') ]]>  
+    		</if>
+    		<if test="handleTimeBegin != null">
+        		AND <![CDATA[ DATE_FORMAT(handle_time, '%Y-%m-%d') >= DATE_FORMAT(#{handleTimeBegin}, '%Y-%m-%d') ]]>   
+    		</if>
+    		<if test="handleTimeEnd != null">
+        		AND <![CDATA[ DATE_FORMAT(handle_time, '%Y-%m-%d') <= DATE_FORMAT(#{handleTimeEnd}, '%Y-%m-%d') ]]>  
+    		</if>
+  		</where>
+	</select>
+	
+	<select id="getOrders" parameterType="java.util.HashMap" resultType="Order">
+		select  order_id orderId,
+		        order_type orderType, 
+		        order_status orderStatus,
+		        submit_time submitTime, 
+		        handle_time handleTime,
+		        finish_time finishTime,
+		        begin_time beginTime,
+		        end_time endTime,
+		        owner,handler,notes
+		from PAS_ORDER
+		<where> 
+    		<if test="orderId != null">
+         		order_id like concat('%',#{orderId},'%')
+    		</if> 
+    		<if test="orderType != null">
+         		AND order_type = #{orderType}
+    		</if> 
+    		<if test="orderStatus!=null and orderStatus>0">
+         		AND order_status = #{orderStatus}
+    		</if>
+    		<if test="owner != null">
+        		AND owner like concat('%',#{owner},'%')
+    		</if>
+    		<if test="handler != null and handler!=''">
+        		AND handler like concat('%',#{handler},'%')
+    		</if>
+    		<if test="submitTimeBegin != null">
+        		AND <![CDATA[ DATE_FORMAT(submit_time, '%Y-%m-%d') >= DATE_FORMAT(#{submitTimeBegin}, '%Y-%m-%d') ]]> 
+    		</if>
+    		<if test="submitTimeEnd != null">
+        		AND <![CDATA[ DATE_FORMAT(submit_time, '%Y-%m-%d') <= DATE_FORMAT(#{submitTimeEnd}, '%Y-%m-%d') ]]>  
+    		</if>
+    		<if test="handleTimeBegin != null">
+        		AND <![CDATA[ DATE_FORMAT(handle_time, '%Y-%m-%d') >= DATE_FORMAT(#{handleTimeBegin}, '%Y-%m-%d') ]]>   
+    		</if>
+    		<if test="handleTimeEnd != null">
+        		AND <![CDATA[ DATE_FORMAT(handle_time, '%Y-%m-%d') <= DATE_FORMAT(#{handleTimeEnd}, '%Y-%m-%d') ]]>  
+    		</if>
+  		</where>
+		order by order_id desc
+	</select>
+	
+	<update id="updateItemStatus" parameterType="OrderItem">
+		UPDATE PAS_ORDER_ITEM 
+		SET ITEM_STATUS = #{itemStatus}
+		WHERE ITEM_ID = #{itemId}
+	</update>
+	
+	<update id="updateItem" parameterType="OrderItem">
+		UPDATE PAS_ORDER_ITEM 
+		<set>
+      		<if test="itemStatus != null and itemStatus > -2">ITEM_STATUS = #{itemStatus}</if>
+      		<if test="handleTime != null">,HANDLE_TIME=#{handleTime}</if>
+      		<if test="finishTime != null">,FINISH_TIME=#{finishTime}</if>
+    	</set>
+		WHERE ITEM_ID = #{itemId}
+	</update>
+	
+	<update id="updateItemAttr" parameterType="ItemAttr">
+		UPDATE PAS_ITEM_ATTR 
+			SET ITEM_ID = #{itemId} ,
+				ATTR_NAME = #{attrName} ,
+				ATTR_VALUE = #{attrValue} ,
+				DESCRIPTION = #{description} 
+		WHERE ID = #{id}
+	</update>
+	
+	<insert id="insertItemAttr" parameterType="ItemAttr">
+		INSERT INTO PAS_ITEM_ATTR(ID, ITEM_ID , ATTR_NAME, ATTR_VALUE,DESCRIPTION)
+			VALUES(#{id},#{itemId},#{attrName},#{attrValue},#{description});
+	</insert>
+</mapper>

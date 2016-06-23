@@ -1,0 +1,36 @@
+﻿[
+	{ id: "app", text: "自助服务平台"},
+	{ id: "appOpen", text: "应用开通",pid: "app"},
+	{ id: "myOrderMgr", pid: "appOpen", text: "我的订单", iconCls: "Node", url: "../app/order/myOrderMgr.jsp" },
+	{ id: "myApplications", pid: "appOpen", text: "我的应用", iconCls: "Node", url: "../app/application/myAppMgr.jsp" },
+	{ id: "myServices", pid: "appOpen", text: "我的服务", iconCls: "Node", url: "../app/service/myServicesMgr.jsp" },
+		
+	{ id: "appManage", text: "应用管理",pid: "app"},
+	{ id: "listApplications_deploy", pid: "appManage", text: "应用部署", iconCls: "Node", url: "../app/deploy/listApplications.jsp" },
+	{ id: "listApplications_control", pid: "appManage", text: "应用控制", iconCls: "Node", url: "../app/control/listApplications.jsp" }	,
+	{ id: "appSetting", pid: "appManage", text: "应用设置", iconCls: "Node", url: "../app/setting/appSetting.jsp" }	,
+	
+	
+	{ id: "monitor", text: "应用监控",pid: "app"},
+	{ id: "appMonitor", pid: "monitor", text: "监控状态", iconCls: "Node", url: "../app/monitor/remark/showAppMonitor.jsp" },
+	{ id: "appLog", pid: "monitor", text: "日志查看", iconCls: "Node", url: "../app/logs/appLog.jsp" },
+	{ id: "appStretchStrategy", pid: "monitor", text: "伸缩策略", iconCls: "Node", url: "../app/scale/remark/appStrategyConfig.jsp" },
+	
+	{ id: "mysql", text: "数据库管理",pid: "app"},
+	{ id: "mySqlAdmin", pid: "mysql", text: "数据维护", iconCls: "Node", url: "../app/data/mySqlAdmin.jsp" },
+	
+	
+	{ id: "person", text: "个人信息",pid: "app"},
+	{ id: "updatePwd", pid: "person", text: "修改密码", iconCls: "Node", url: "../app/account/updatePwd.jsp" },
+	{ id: "myAccount", pid: "person", text: "资料维护", iconCls: "Node", url: "../app/account/myAccount.jsp" }
+	
+		,
+	
+	{ id: "coframe", text: "运维管理平台"},
+	{ id: "authority", text: "服务审批",pid: "coframe"},
+	{ id: "addRight7", pid: "authority", text: "订单管理", iconCls: "Node", url: "../platform/audit/order/orderMgr.jsp" },
+	{ id: "resourcemgr", text: "资源管理",pid: "coframe"},
+	{ id: "host", pid: "resourcemgr", text: "主机管理", iconCls: "Node", url: "../platform/resourcemgr/host/hostResMgr.jsp" },
+	{ id: "storage", pid: "resourcemgr", text: "存储管理", iconCls: "Node", url: "../platform/resourcemgr/storage/storageResMgr.jsp" }
+	
+]

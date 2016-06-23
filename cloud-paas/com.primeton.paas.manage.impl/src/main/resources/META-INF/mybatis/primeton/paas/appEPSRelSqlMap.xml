@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="appEPSRelSqlMap">
+
+	<insert id="insert" parameterType="java.util.HashMap">
+		INSERT INTO pas_app_eps_rel (app_name
+			<if test="avg_inst_id !=null">, avg_inst_id</if>
+			<if test="inc_inst_id !=null">, inc_inst_id</if>
+			<if test="dec_inst_id !=null">, dec_inst_id</if>
+		) VALUES (#{app_name}
+			<if test="avg_inst_id !=null">, #{avg_inst_id}</if>
+			<if test="inc_inst_id !=null">, #{inc_inst_id}</if>
+			<if test="dec_inst_id !=null">, #{dec_inst_id}</if>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="java.util.HashMap">
+		DELETE FROM pas_app_eps_rel 
+			WHERE 1=1
+			<if test="app_name !=null">
+				AND app_name = #{app_name}
+			</if>
+	</delete>
+	
+	<update id="update" parameterType="java.util.HashMap">
+		UPDATE pas_app_eps_rel
+			SET app_name = #{app_name}
+			<if test="avg_inst_id !=null">, avg_inst_id = #{avg_inst_id}</if>
+			<if test="inc_inst_id !=null">, inc_inst_id = #{inc_inst_id}</if>
+			<if test="dec_inst_id !=null">, dec_inst_id = #{dec_inst_id}</if>
+		WHERE app_name = #{app_name}
+	</update>
+
+	
+	<select id="select" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT * from pas_app_eps_rel
+			WHERE 1=1
+			<if test="app_name !=null">
+				AND app_name = #{app_name}
+			</if>
+	</select>
+	
+</mapper>

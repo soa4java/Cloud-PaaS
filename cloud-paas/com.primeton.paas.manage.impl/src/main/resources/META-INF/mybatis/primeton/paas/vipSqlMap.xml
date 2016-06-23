@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="vipSqlMap">
+	<!--<typeAlias alias="VIPSegment" type="com.primeton.paas.manage.spi.model.VIPSegment" />-->
+	
+	<!-- 增加网段 -->
+	<insert id="addVIPSegment" parameterType="VIPSegment">
+		INSERT INTO PAS_VIP_SEGMENT (ID,BEGIN,END,NETMASK <if test="name != null">,NAME</if> <if test="remarks != null">,REMARKS</if>) 
+		VALUES (#{id},#{begin},#{end},#{netmask}
+				 <if test="name != null">,#{name}</if>
+				 <if test="remarks != null">,#{remarks}</if>)
+	</insert>
+	
+	<!-- 增加ip -->
+	<insert id="addVIP" parameterType="java.util.HashMap">
+		INSERT INTO PAS_VIP_USED ( VIP,<if test="segmentId != null">SEGMENTID</if>) 
+		VALUES ( #{vip} <if test="segmentId != null">,#{segmentId}</if>)
+	</insert>
+	
+	<!-- 删除网段-->
+	<delete id="delVIPSegment" parameterType="java.lang.String">
+		DELETE FROM pas_vip_segment WHERE id = #{value}
+	</delete>
+	
+	<!-- 根据网段id删除段内已使用的ip-->
+	<delete id="delVIPBySegmentId" parameterType="java.lang.String">
+		DELETE FROM pas_vip_used WHERE segmentId = #{value}
+	</delete>
+	
+	<!-- 修改网段 -->
+	<update id="updateVIPSegment" parameterType="java.util.HashMap">
+		UPDATE 	pas_vip_segment 
+		set begin=#{begin},end=#{end},netmask=#{netmask}
+		where id=#{id}
+	</update>
+	
+	<!-- 删除ip-->
+	<delete id="delVIP" parameterType="java.lang.String">
+		DELETE FROM pas_vip_used WHERE vip = #{value}
+	</delete>
+	
+	<!-- 根据网段ID 查询网段信息 -->
+	<select id="getVIPSegment" parameterType="java.lang.String" resultType="VIPSegment">
+		SELECT
+		    id,
+		    name,
+		    begin,
+		    end,
+		    remarks,
+		    netmask
+		FROM
+		    pas_vip_segment
+		where id = #{value}
+	</select>
+	
+	<!-- 获取所有网段 java.util.ArrayList-->
+	<select id="getAllVIPSegment" resultType="VIPSegment">
+		SELECT
+		    id,
+		    name,
+		    begin,
+		    end,
+		    remarks,
+		    netmask
+		FROM
+		    pas_vip_segment 
+		order by begin asc
+	</select>
+	
+	<select id="countAllVIPSegment" resultType="int">
+		SELECT COUNT(*) FROM pas_vip_segment
+	</select>
+	<select id="countUsedIPs" resultType="int">
+		SELECT COUNT(*) FROM pas_vip_used where segmentId=#{value}
+	</select>
+	
+	<!--获取某个网段已使用的ip -->
+	<select id="getUsedIPs" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT vip FROM pas_vip_used where segmentId=#{value}
+		order by vip asc
+	</select>
+	
+	<!--获取所有已使用的ip -->
+	<select id="getAllUsedIPs" resultType="java.lang.String">
+		SELECT
+		    vip
+		FROM
+		    pas_vip_used
+		order by vip asc
+	</select>
+</mapper>

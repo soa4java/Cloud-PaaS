@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="storageSqlMap">
+	<insert id="insert" parameterType="Storage">
+		INSERT INTO pas_shared_storage(id, name, path, size, isAssigned)
+			VALUE(#{id}, #{name}, #{path}, #{size}, #{isAssigned})
+	</insert>
+	
+	<delete id="delete" parameterType="java.lang.String">
+		DELETE FROM pas_shared_storage 
+			WHERE id = #{id}
+	</delete>
+	
+	<update id="update" parameterType="Storage">
+		UPDATE pas_shared_storage
+		SET size = #{size}
+			<if test="name !=null and name != ''">,name = #{name}</if>
+			<if test="path !=null and path != ''">,path = #{path}</if>
+			,isAssigned = #{isAssigned}
+			WHERE id = #{id}
+	</update>
+	
+	<select id="selectAll" resultType="Storage">
+		SELECT id, name, path, size, isAssigned FROM pas_shared_storage
+	</select>
+	
+	<select id="selectAllByCondition" resultType="Storage" parameterType="java.util.HashMap">
+		SELECT id, name, path, size, isAssigned FROM pas_shared_storage
+		<where>
+			1=1 
+			<if test="id !=null and id != ''">
+				AND id like concat('%',#{id},'%')
+			</if>
+			<if test="name !=null and name != ''">
+				AND name like #{name}
+			</if>
+			<if test="path !=null and path != ''">
+				AND path like #{path}
+			</if>
+			<if test="size !=null and size!='0'">
+				AND size = #{size}
+			</if>
+			<if test="isAssigned !=null">
+				AND isAssigned like concat('%',#{isAssigned},'%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectById" parameterType="java.lang.String" resultType="Storage">
+		SELECT id, name, path, size, isAssigned FROM pas_shared_storage
+			WHERE id = #{id}
+	</select>
+	
+	<select id="countAll" resultType="int">
+		SELECT COUNT(*) FROM pas_shared_storage
+	</select>
+	
+	<!-- Table pas_storage_mounts -->
+	<insert id="insertWhiteList" parameterType="WhiteList">
+		INSERT INTO pas_storage_mounts(id, ip, path, status)
+			VALUE(#{id}, #{ip}, #{path}, #{status})
+	</insert>
+	
+	<update id="updateWhiteList" parameterType="WhiteList">
+		UPDATE pas_storage_mounts 
+		SET status = #{status}
+			<if test="path !=null and path != ''">,path = #{path}</if>
+		WHERE id = #{id} AND ip = #{ip}
+	</update>
+	
+	<delete id="deleteWhiteList" parameterType="java.util.HashMap">
+		DELETE FROM pas_storage_mounts
+		<where>
+			<if test="id !=null and id!=''">
+				id = #{id}
+			</if>
+			<if test="ip !=null and ip!=''">
+				AND ip = #{ip}
+			</if>
+		</where>
+	</delete>
+	
+	<select id="selectWhiteList" parameterType="java.util.HashMap" resultType="WhiteList">
+		SELECT id, ip, path, status FROM pas_storage_mounts
+		<where>
+			<if test="id !=null and id != ''">
+				id = #{id}
+			</if>
+			<if test="ip !=null and ip != ''">
+				AND ip = #{ip}
+			</if>
+			<if test="path !=null and path != ''">
+				AND path like #{path}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="getStorages" resultType="Storage" parameterType="java.util.HashMap">
+		SELECT id, name, path, size, isAssigned FROM pas_shared_storage
+		<where>
+			<if test="id !=null and id != ''">
+				id like concat('%',#{id},'%')
+			</if>
+			<if test="name !=null and name !=''">
+				AND name like #{name}
+			</if>
+			<if test="path !=null and path !=''">
+				AND path like #{path}
+			</if>
+			<if test="size !=null and size!=0">
+				AND	size = #{size}
+			</if>
+			<if test="isAssigned !=null">
+				AND isAssigned like concat('%',#{isAssigned},'%')
+			</if>
+		</where>
+		order by id desc
+	</select>
+
+	<select id="getStorageCount" resultType="int" parameterType="java.util.HashMap">
+		SELECT COUNT(*) FROM pas_shared_storage
+		<where>
+			<if test="id !=null and id != ''">
+				id like concat('%',#{id},'%')
+			</if>
+			<if test="name !=null and name != ''">
+				AND name like #{name}
+			</if>
+			<if test="path !=null and path != ''">
+				AND path like #{path}
+			</if>
+			<if test="size !=null and size!=0">
+				AND size = #{size}
+			</if>
+			<if test="isAssigned !=null">
+				AND isAssigned like concat('%',#{isAssigned},'%')
+			</if>
+		</where>
+	</select>
+	
+</mapper>

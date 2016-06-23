@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<application xmlns="http://www.primeton.com/xmlns/paas/1.0">
+	<module name="ThreadPool">
+		<!--响应处理线程池配置， timeout单位为秒 -->
+		<group name="default">
+			<configValue key="minPoolSize">20</configValue>
+			<configValue key="maxPoolSize">200</configValue>
+			<configValue key="aliveTimeout">60</configValue>
+			<configValue key="queueSize">10000</configValue>
+		</group>
+	</module>
+</application>

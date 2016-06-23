@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://www.unionpay.com/ResourceService" xmlns:eos="http://www.priemton.com/EOS">
+  <soapenv:Header>
+      <wsse:Security soapenv:mustUnderstand="0" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+                   <wsse:UsernameToken wsu:Id="UsernameToken-1815911473" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+                            <wsse:Username>paas</wsse:Username>
+                            <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">000000</wsse:Password>
+                   </wsse:UsernameToken>
+     </wsse:Security>
+         <eos:UserObject>
+                   <eos:UserId>paas</eos:UserId>
+         </eos:UserObject>
+  </soapenv:Header>
+   <soapenv:Body>
+      <res:destroyVM>
+         <!--Optional:-->
+         <res:in0>2013092915305022</res:in0>
+      </res:destroyVM>
+   </soapenv:Body>
+</soapenv:Envelope>

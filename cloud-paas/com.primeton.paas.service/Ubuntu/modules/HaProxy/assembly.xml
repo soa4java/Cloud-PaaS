@@ -1,0 +1,43 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+	<id>release</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<fileSets>
+		<fileSet>
+			<directory>../../../src/main/services/HaProxy/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+			<fileMode>711</fileMode>
+			<lineEnding>unix</lineEnding>
+			<excludes>
+				<exclude>*.formatted</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet>
+			<directory>../../../src/main/services/HaProxy/instances</directory>
+			<outputDirectory>instances</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>../../../src/main/services/HaProxy/packages/java</directory>
+			<outputDirectory>packages/java</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>../../../src/main/services/HaProxy/packages/source</directory>
+			<outputDirectory>packages/source</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>../../../src/main/services/HaProxy/packages/temp</directory>
+			<outputDirectory>packages/temp</outputDirectory>
+		</fileSet>
+		<!-- Ubuntu -->
+		<fileSet>
+			<directory>../../services/HaProxy/packages/binary</directory>
+			<outputDirectory>packages/binary</outputDirectory>
+		</fileSet>
+	</fileSets>
+
+</assembly>  

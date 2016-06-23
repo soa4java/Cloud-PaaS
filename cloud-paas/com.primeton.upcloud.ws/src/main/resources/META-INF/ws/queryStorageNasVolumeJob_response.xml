@@ -1,0 +1,45 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <_tns_:queryStorageNasVolumeJobResponse xmlns:_tns_="http://www.unionpay.com/ResourceService">
+         <ns1:out1 xmlns:ns1="http://www.unionpay.com/ResourceService">
+            <ns2:jobID xmlns:ns2="http://response.api.service.cloud.primeton.com">2013101417250082</ns2:jobID>
+            <ns2:jobStatus xmlns:ns2="http://response.api.service.cloud.primeton.com">SUCCESS</ns2:jobStatus>
+            <ns2:message xmlns:ns2="http://response.api.service.cloud.primeton.com">Task is success.</ns2:message>
+            <ns2:nasVolume xmlns:ns2="http://response.api.service.cloud.primeton.com">
+               <ns3:attribute1 ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:attribute10 ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:attribute2 ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:attribute3 ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:attribute4 ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:attribute5 ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:attribute6 ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:attribute7 ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:attribute8 ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:attribute9 ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:createBy xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">paas</ns3:createBy>
+               <ns3:createByName xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">paas</ns3:createByName>
+               <ns3:createOn xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">2013-10-14T17:24:55+08:00</ns3:createOn>
+               <ns3:fkPkGroup xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">2013101210013170</ns3:fkPkGroup>
+               <ns3:fkPkStorageNas xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">2013091610242115</ns3:fkPkStorageNas>
+               <ns3:groupName ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:modifyBy ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:modifyOn xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">2013-10-14T17:24:55+08:00</ns3:modifyOn>
+               <ns3:owner xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">paas</ns3:owner>
+               <ns3:ownerOrg xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">upcloud</ns3:ownerOrg>
+               <ns3:pkStorageNasVolume xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">2013101417245554</ns3:pkStorageNasVolume>
+               <ns3:processStatus xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">OK</ns3:processStatus>
+               <ns3:remark ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:storageNasName ns4:nil="true" xmlns:ns3="http://pojo.resource.business.cloud.primeton.com" xmlns:ns4="http://www.w3.org/2001/XMLSchema-instance"/>
+               <ns3:uniqueId xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">RegionOne/27bffc63-6474-40c3-bba7-e6fb0da65d6e</ns3:uniqueId>
+               <ns3:volumeDisplayName xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">201310140002</ns3:volumeDisplayName>
+               <ns3:volumeName xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">201310140002</ns3:volumeName>
+               <ns3:volumePath xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">192.168.100.253:/nfs/201310140002</ns3:volumePath>
+               <ns3:volumeSize xmlns:ns3="http://pojo.resource.business.cloud.primeton.com">1</ns3:volumeSize>
+               <ns3:volumeWhiteList xmlns:ns3="http://pojo.resource.business.cloud.primeton.com"/>
+            </ns2:nasVolume>
+            <ns2:responseMessage xmlns:ns2="http://response.api.service.cloud.primeton.com">Query job status complete.</ns2:responseMessage>
+            <ns2:responseStatus xmlns:ns2="http://response.api.service.cloud.primeton.com">OK</ns2:responseStatus>
+         </ns1:out1>
+      </_tns_:queryStorageNasVolumeJobResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<config xmlns="http://org.gocom.cloud/xmlns/cesium/1.0">
+	<module name="zkServersConfig">
+		<group name="default">
+			<!-- ip:port,ip:port... -->
+			<configValue key="zkServers">192.168.100.21:2181</configValue>
+			<!-- unit million seconds -->
+			<configValue key="connectionTimeout">30000</configValue>
+		</group>
+	</module>
+</config>

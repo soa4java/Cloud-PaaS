@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userSqlMap">
+	
+	<!--<typeAlias alias="User" type="com.primeton.paas.manage.api.model.User"/>-->
+
+	<!-- 根据ID查询用户信息 -->
+	<select id="getUserById" parameterType="java.lang.String" resultType="User">
+		select  u.id , 
+				u.user_Id as userId, 
+				u.user_name as userName,
+		        u.password password,
+		        u.tel ,
+		        u.phone,
+		        u.email,
+		        u.status,
+		        u.gender,
+		        u.address,
+		        u.notes,
+		        u.handler,
+		        u.unlocktime,u.lastlogin,u.createtime     
+		from PAS_USER u
+		where u.user_Id=#{userId}
+	</select>
+	
+	<!-- 查询符合条件的用户数 -->
+	<select id="getUserCount" parameterType="User" resultType="int">
+		select count(1)   
+		from PAS_USER u
+		<where> 
+			<if test="id !=null and id > 0.0">
+        		u.id=#{id}
+    		</if>
+			
+			<if test="handler !=null">
+				AND u.handler=#{handler}
+			</if>
+					
+			<if test="userId !=null">
+				AND u.user_id like concat('%',#{userId},'%')
+			</if>
+			
+			<if test="status !=null and status > 0.0">
+        		AND u.status=#{status}
+    		</if>
+			
+			<if test="userName !=null">
+				AND u.user_name like concat('%',#{userName},'%')
+			</if>
+			
+			<if test="tel !=null">
+				AND u.tel like concat('%',#{tel},'%')
+			</if>
+			
+			<if test="phone !=null">
+				AND u.phone like concat('%',#{phone},'%')
+			</if>
+						
+			<if test="email !=null">
+				AND u.email like concat('%',#{email},'%')
+			</if>
+		</where>	
+	</select>
+	
+	<!-- 根据条件查询 -->
+	<select id="getUsers" parameterType="User" resultType="User">
+		select  u.id , 
+				u.user_Id as userId, 
+				u.user_name as userName,
+		        u.password password,
+		        u.tel ,
+		        u.phone,
+		        u.email,
+		        u.status,
+		        u.gender,
+		        u.address,
+		        u.notes,
+		        u.handler,
+		        u.unlocktime,u.lastlogin,u.createtime     
+		from PAS_USER u
+		<where>
+			<if test="id !=null and id > 0.0">
+        		u.id=#{id}
+    		</if>
+			
+			<if test="handler !=null">
+				AND u.handler=#{handler}
+			</if>
+					
+			<if test="userId !=null">
+				AND u.user_id like concat('%',#{userId},'%')
+			</if>
+			
+			<if test="status !=null and status > 0.0">
+        		AND u.status=#{status}
+    		</if>
+			
+			<if test="userName !=null">
+				AND u.user_name like concat('%',#{userName},'%')
+			</if>
+			
+			<if test="tel !=null">
+				AND u.tel like concat('%',#{tel},'%')
+			</if>
+			
+			<if test="phone !=null">
+				AND u.phone like concat('%',#{phone},'%')
+			</if>
+						
+			<if test="email !=null">
+				AND u.email like concat('%',#{email},'%')
+			</if>
+		</where>
+		order by u.createtime desc	
+	</select>
+	
+	<select id="getUsersByUserIdAndPhone" parameterType="User" resultType="User">
+		select  u.id , 
+				u.user_Id as userId, 
+				u.user_name as userName,
+		        u.password password,
+		        u.tel ,
+		        u.phone,
+		        u.email,
+		        u.status,
+		        u.gender,
+		        u.address,
+		        u.notes,
+		        u.handler,
+		        u.unlocktime,u.lastlogin,u.createtime     
+		from PAS_USER u
+		<where>
+			<if test="userId !=null">
+				u.user_id=#{userId}
+			</if>
+			<if test="phone !=null">
+				AND u.phone=#{phone}
+			</if>
+		</where>	
+	</select>
+	
+	<update id="updateStatus" parameterType="User">
+		UPDATE PAS_USER 
+		SET status = #{status} ,
+		    handler = #{handler}
+		WHERE user_id = #{userId}
+	</update>
+	
+	<update id="updatePasswd" parameterType="User">
+		UPDATE PAS_USER 
+		SET password = #{password}
+		WHERE user_id = #{userId}
+	</update>
+	
+	<update id="updateUser" parameterType="User">
+		UPDATE PAS_USER 
+		<set>
+			user_name = #{userName},
+		    gender = #{gender},
+      		<if test="status != null and status > 0.0">status = #{status},</if>
+      		<if test="handler != null">handler = #{handler},</if>
+      		<if test="tel != null">tel = #{tel},</if>
+      		<if test="phone != null">phone = #{phone},</if>
+      		<if test="email != null">email = #{email},</if>
+      		<if test="address != null">address = #{address},</if>
+      		<if test="notes != null">notes = #{notes},</if>
+      		<if test="tel == null">tel = null,</if>
+      		<if test="address == null">address = null,</if>
+      		<if test="notes == null">notes = null</if>
+      		
+    	</set>
+		WHERE user_id = #{userId}
+	</update>
+	
+	<insert id="addUser" parameterType="User">
+		insert into PAS_USER(Id,user_id,user_name,password,gender,phone,email,status,address,createtime,notes,handler
+			<if test="tel != null">,tel</if>)
+		value(#{id},#{userId},#{userName},#{password},#{gender},#{phone},#{email},#{status},#{address}, now(),#{notes},#{handler}
+		<if test="tel != null">,#{tel}</if>
+		)
+	</insert>
+	
+	
+	<delete id="delUser" parameterType="java.lang.String">
+		delete from PAS_USER where user_id = #{userId}
+	</delete>
+		
+	<update id="updateUser-bak" parameterType="User">
+		UPDATE PAS_USER 
+		<set>
+			user_id = #{userId}
+      		<if test="gender != null">,gender = #{gender}</if>
+      		<if test="userName != null">,user_name = #{userName}</if>
+      		<if test="tel != null">,tel = #{tel}</if>
+      		<if test="phone != null">,phone = #{phone}</if>
+      		<if test="email != null">,email = #{email}</if>
+      		<if test="address != null">,address = #{address}</if>
+      		<if test="notes != null">,notes = #{notes}</if>
+    	</set>
+		WHERE user_id = #{userId}
+	</update>
+</mapper>

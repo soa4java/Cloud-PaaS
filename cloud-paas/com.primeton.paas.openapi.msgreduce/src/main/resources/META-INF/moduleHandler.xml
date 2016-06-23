@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+	<module name="ConfigFrame">
+		<group name="MsgReducePolicy">
+			<configValue key="depend"></configValue>
+			<configValue key="handler">com.primeton.paas.openapi.msgreduce.config.MsgReducePolicyHandler</configValue>
+		</group>
+	</module>
+</Config>

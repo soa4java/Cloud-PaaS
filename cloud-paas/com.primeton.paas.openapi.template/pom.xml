@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.primeton</groupId>
+		<artifactId>paas</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<groupId>com.primeton.paas</groupId>
+	<artifactId>com.primeton.paas.openapi.template</artifactId>
+	<packaging>war</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.primeton.paas</groupId>
+			<artifactId>com.primeton.paas.common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.primeton.paas</groupId>
+			<artifactId>com.primeton.paas.exception</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.primeton.paas</groupId>
+			<artifactId>com.primeton.paas.openapi.admin</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.primeton.paas</groupId>
+			<artifactId>com.primeton.paas.openapi.base</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.primeton.paas</groupId>
+			<artifactId>com.primeton.paas.openapi.engine</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.primeton.paas</groupId>
+			<artifactId>
+				com.primeton.paas.openapi.flowcontrol
+			</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.primeton.paas</groupId>
+			<artifactId>com.primeton.paas.openapi.httpin</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.primeton.paas</groupId>
+			<artifactId>com.primeton.paas.openapi.invoker</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.primeton.paas</groupId>
+			<artifactId>com.primeton.paas.openapi.msgreduce</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.primeton.paas</groupId>
+			<artifactId>com.primeton.paas.openapi.security</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
+
+	<!-- Build WAR -->
+	<build>
+		<!-- Define default.war as WAR file name -->
+		<finalName>default</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<!-- filter some no use jar -->
+					<packagingExcludes>
+						WEB-INF/lib/c3p0-*.jar,
+						WEB-INF/lib/commons-logging-*.jar,
+						WEB-INF/lib/hsqldb-*.jar,
+						WEB-INF/lib/javax.servlet-*.jar,
+						WEB-INF/lib/jetty-*.jar,
+						WEB-INF/lib/jline-*.jar,
+						WEB-INF/lib/junit-*.jar,
+						WEB-INF/lib/mchange-commons-java-*.jar,
+						WEB-INF/lib/midao-c3p0-*.jar,
+						WEB-INF/lib/netty-*.jar,
+						WEB-INF/lib/servlet-api-*.jar,
+						WEB-INF/lib/stax-api-*.jar,
+						WEB-INF/lib/xalan-*.jar
+					</packagingExcludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

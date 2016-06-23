@@ -1,0 +1,5 @@
+com.primeton.paas.manage.api.impl.resource.VmPoolStartupListsener
+com.primeton.paas.manage.api.impl.resource.StoragePoolStartupListsener
+com.primeton.paas.manage.api.impl.monitor.StartupListener
+com.primeton.paas.manage.api.impl.startup.GatewayMonitorStartup
+com.primeton.paas.manage.api.impl.startup.RedisMonitorStartup

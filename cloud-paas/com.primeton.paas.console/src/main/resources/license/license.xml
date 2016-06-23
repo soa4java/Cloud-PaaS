@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<licenses>
+    <license-group embed="true" format="1.0" productFamily="Primeton PaaS" release="6.0">
+        <license edition="EE" licensee="Primeton Evaluation Customer" sign="05f1e09f91b087e9191af02060f50f2cd47b6970b5356608fcbcc57d4c6db0559c30b157e1f590d9c7845391e421fb2f68121ee7e4f6f78b7365313bd0fba8c06ed21918bf0dea6a28310e8667d4c2946f951261d0ae59bbf730b90008787c84be5270e3cca23d15256cc9035027f7e1e32fb9618276f9a6365f480152b8a94d" type="EVAL">
+            <license-element key="cpus" privilege="true" value="40"/>
+            <license-element key="db" value="unlimited"/>
+            <license-element key="as" value="unlimited"/>
+            <license-element key="os" value="unlimited"/>
+            <license-element key="expiration" value="2016-02-27"/>
+            <license-element key="ip" value="OS+J5MNwUmsrPWNB3TpkZkLF17hxmqtzqQ=="/>
+            <license-element key="mac" value="OS+J5MNwUmsrPWNB3TpkZkLF17hxmqtzqQ=="/>
+            <license-element key="server" value="false">
+            </license-element>
+            <license-element key="richweb" value="false">
+            </license-element>
+            <license-element key="managermodel" value="group"/>
+            <license-element key="cluster" value="true"/>
+            <license-element key="international" value="unlimited"/>
+            <license-element key="concurrency" value="unlimited"/>
+            <license-element key="distributed" value="true"/>
+            <license-element key="scaAssembly" value="false"/>
+            <license-element key="scaCaller" value="false"/>
+            <license-element key="wsBinding" value="false"/>
+            <license-element key="wsCaller" value="false"/>
+        </license>
+    </license-group>
+</licenses>

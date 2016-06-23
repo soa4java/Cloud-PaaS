@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<config xmlns="http://org.gocom.cloud/xmlns/cesium/1.0">
+    <module name="zkServersConfig">
+    	<!-- default zookeeper server config -->
+		<group name="default">
+			<!-- zkServers connection string -->
+			<configValue key="zkServers">192.168.189.128:2181</configValue>
+			<!-- zooKeeper timeout ,unit million seconds -->
+			<configValue key="connectionTimeout">60000</configValue>
+		</group>
+    </module>
+</config>

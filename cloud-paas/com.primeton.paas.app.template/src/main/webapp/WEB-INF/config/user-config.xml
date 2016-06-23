@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<application xmlns="http://www.primeton.com/xmlns/paas/1.0">
+	<!-- Application DataSource Configuration -->
+	<module name="DataSource">
+		<group name="default">
+			<configValue key="rdb-service-id">mysql-1</configValue>
+			<configValue key="c3p0.driverClass">com.mysql.jdbc.Driver</configValue>
+			<configValue key="c3p0.jdbcUrl">jdbc:mysql://127.0.0.1:3306/test</configValue>
+			<configValue key="c3p0.user">root</configValue>
+			<configValue key="c3p0.password">root</configValue>
+			<configValue key="c3p0.initialPoolSize">5</configValue>
+			<configValue key="c3p0.minPoolSize">5</configValue>
+			<configValue key="c3p0.maxPoolSize">10</configValue>
+			<configValue key="c3p0.acquireRetryAttempts">1</configValue>
+			<configValue key="c3p0.acquireRetryDelay">1000</configValue>
+			<configValue key="c3p0.acquireIncrement">2</configValue>
+			<configValue key="c3p0.checkoutTimeout">60000</configValue>
+			<configValue key="c3p0.idleConnectionTestPeriod">60000</configValue>
+			<configValue key="c3p0.preferredTestQuery">SELECT COUNT(*) FREOM DEFAULT_TABLE</configValue>
+			<configValue key="description">This is MySQL Service Description.</configValue>
+		</group>
+	</module>
+</application>

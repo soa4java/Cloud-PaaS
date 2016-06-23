@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<handlers>
+	<handler handle-class="com.primeton.paas.app.runtime.startup.ConfigStartupRuntimeListener" />
+	<handler handle-class="com.primeton.paas.app.runtime.startup.LoggerStartupListener" />
+	<handler handle-class="com.primeton.paas.app.runtime.startup.CacheStartupListener" />
+	<handler handle-class="com.primeton.paas.app.runtime.startup.DataSourceStartupListener" />
+	<handler handle-class="com.primeton.paas.app.runtime.startup.LogTransferStartupListener" />
+</handlers>

@@ -1,0 +1,1 @@
+Copy sdk.zip to override here while deploy console-app service.

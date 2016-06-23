@@ -1,0 +1,283 @@
+.default
+{
+    background:url(../images/icons/default.png) no-repeat;width:16px;height:16px;
+}
+
+.app_controlApp
+{
+    background:url(../images/icons/app_controlApp.png) no-repeat;width:16px;height:16px;
+}
+
+.app_deployApp
+{
+    background:url(../images/icons/app_deployApp.png) no-repeat;width:16px;height:16px;
+}
+
+.app_myApp
+{
+    background:url(../images/icons/app_myApp.png) no-repeat;width:16px;height:16px;
+}
+
+.app_myOrder
+{
+    background:url(../images/icons/app_myOrder.png) no-repeat;width:16px;height:16px;
+}
+
+.app_myServices
+{
+    background:url(../images/icons/app_myServices.png) no-repeat;width:16px;height:16px;
+}
+
+.app_settingApp
+{
+    background:url(../images/icons/app_settingApp.png) no-repeat;width:16px;height:16px;
+}
+
+.app_certApp
+{
+    background:url(../images/icons/app_certApp.png) no-repeat;width:16px;height:16px;
+}
+
+.app_appMonitor
+{
+    background:url(../images/icons/app_appMonitor.png) no-repeat;width:16px;height:16px;
+}
+
+.app_appStrategyConfig
+{
+    background:url(../images/icons/app_appStrategyConfig.png) no-repeat;width:16px;height:16px;
+}
+
+.app_appServiceMonitor
+{
+    background:url(../images/icons/app_appServiceMonitor.png) no-repeat;width:16px;height:16px;
+}
+
+.app_appLog
+{
+    background:url(../images/icons/app_appLog.png) no-repeat;width:16px;height:16px;
+}
+
+.app_mySqlAdmin
+{
+    background:url(../images/icons/app_mySqlAdmin.png) no-repeat;width:16px;height:16px;
+}
+
+.app_updatePwd
+{
+    background:url(../images/icons/app_updatePwd.png) no-repeat;width:16px;height:16px;
+}
+
+.app_myAccount
+{
+    background:url(../images/icons/app_myAccount.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_orderMgr
+{
+    background:url(../images/icons/platform_orderMgr.png) no-repeat;width:16px;height:16px;
+}
+.platform_usrRegMgr
+{
+    background:url(../images/icons/platform_usrRegMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_innerAppMgr
+{
+    background:url(../images/icons/platform_innerAppMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_outerAppMgr
+{
+    background:url(../images/icons/platform_outerAppMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_hostMgr
+{
+    background:url(../images/icons/platform_hostMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_storageMgr
+{
+    background:url(../images/icons/platform_storageMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_vipMgr
+{
+    background:url(../images/icons/platform_vipMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_cardbinClusterMgr
+{
+    background:url(../images/icons/platform_cardbinClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_cepEngineClusterMgr
+{
+    background:url(../images/icons/platform_cepEngineClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_collectorClusterMgr
+{
+    background:url(../images/icons/platform_collectorClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_haproxyClusterMgr
+{
+    background:url(../images/icons/platform_haproxyClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_jettyClusterMgr
+{
+    background:url(../images/icons/platform_jettyClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_tomcatClusterMgr
+{
+    background:url(../images/icons/tomcat.png) no-repeat;width:22px;height:16px;
+}
+
+.platform_redisClusterMgr
+{
+    background:url(../images/icons/redis.png) no-repeat;width:18px;height:16px;
+}
+
+.platform_jobCtrlClusterMgr
+{
+    background:url(../images/icons/platform_jobCtrlClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_gatewayClusterMgr
+{
+    background:url(../images/icons/gateway.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_hadoopClusterMgr
+{
+    background:url(../images/icons/hadoop.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_keepalivedClusterMgr
+{
+    background:url(../images/icons/platform_keepalivedClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_mailClusterMgr
+{
+    background:url(../images/icons/platform_mailClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_memcachedClusterMgr
+{
+    background:url(../images/icons/platform_memcachedClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_mysqlClusterMgr
+{
+    background:url(../images/icons/platform_mysqlClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_nginxClusterMgr
+{
+    background:url(../images/icons/platform_nginxClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_openapiClusterMgr
+{
+    background:url(../images/icons/platform_openapiClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_smsClusterMgr
+{
+    background:url(../images/icons/platform_smsClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_svnClusterMgr
+{
+    background:url(../images/icons/platform_svnClusterMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_apiServiceMgr
+{
+    background:url(../images/icons/platform_apiServiceMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_apiAuthMgr
+{
+    background:url(../images/icons/platform_apiAuthMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_apiOrderMgr
+{
+    background:url(../images/icons/platform_apiOrderMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_showAppMonitor
+{
+    background:url(../images/icons/platform_showAppMonitor.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_appServiceMonitor
+{
+    background:url(../images/icons/platform_appServiceMonitor.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_showHostMonitor
+{
+    background:url(../images/icons/platform_showHostMonitor.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_listLogs
+{
+    background:url(../images/icons/platform_listLogs.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_pasVarsMgr
+{
+    background:url(../images/icons/platform_pasVarsMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_serverMonitor
+{
+    background:url(../images/icons/platform_serverMonitor.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_strategyConfig
+{
+    background:url(../images/icons/platform_strategyConfig.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_taskServerMonitor
+{
+    background:url(../images/icons/platform_taskServerMonitor.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_updatePwd
+{
+    background:url(../images/icons/platform_updatePwd.png) no-repeat;width:16px;height:16px;
+}
+
+.platform_myAccount
+{
+    background:url(../images/icons/platform_myAccount.png) no-repeat;width:16px;height:16px;
+}
+
+.coframe_functionAuthMgr
+{
+    background:url(../images/icons/coframe_functionAuthMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.coframe_menuAuthMgr
+{
+    background:url(../images/icons/coframe_menuAuthMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.coframe_roleAuthMgr
+{
+    background:url(../images/icons/coframe_roleAuthMgr.png) no-repeat;width:16px;height:16px;
+}
+
+.coframe_userAuthMgr
+{
+    background:url(../images/icons/coframe_userAuthMgr.png) no-repeat;width:16px;height:16px;
+}

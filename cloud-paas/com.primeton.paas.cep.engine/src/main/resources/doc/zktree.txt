@@ -1,0 +1,28 @@
+
+/**
+ * Author	lizhongwen
+ * E-mail	lizw@primeton.com
+ * DEPT		RD
+ */
+
+
+/CEP/Engine
+	|
+	|- default [group]
+	|	|- master [engine]
+	|	|- slave [engine]
+	|	|- ...
+	|- ...
+	|
+	
+/CEP/EPS
+	|
+	|- default [group]
+	|	|- 10001 [instance]
+	|	|- ...
+	|
+	|- ...
+	
+
+/CEP/Engine/default <=> /CEP/EPS/default
+

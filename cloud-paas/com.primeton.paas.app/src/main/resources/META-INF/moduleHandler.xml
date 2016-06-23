@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+	<module name="ConfigFrame">
+		<group name="SimulatorDataSource">
+			<configValue key="depend"></configValue>
+			<configValue key="handler">com.primeton.paas.app.config.handler.SimulatorDataSourceConfigHandler</configValue>
+		</group>
+		<group name="SimulatorVariable">
+			<configValue key="depend"></configValue>
+			<configValue key="handler">com.primeton.paas.app.config.handler.SimulatorVariableConfigHandler</configValue>
+		</group>
+	</module>
+</Config>

@@ -1,0 +1,43 @@
+	body{
+		font-family:arial,sans-serif;
+		font-size:12px;
+	}
+
+	.label{	
+		padding-top:5px;
+		width:65px;
+	}
+	.fg_login{
+		background:url(../../images/platform/login.png) no-repeat; 
+		width:526px;
+		height:434px; 
+		margin-top:1px !important; 
+		margin-top:50px; 
+		margin-left:auto;		
+		margin-right:auto;		
+		border-collapse:collapse;		
+	}
+	.tb{
+		color:#0c3569;
+		height:130px;
+		position:relative;
+		top:280px;
+		left:180px;
+
+	}
+	.txt_input{
+		height:16px;
+		width:180px;
+		background:#e7f4f8;
+		border:1px solid #7fb8ed;
+		color:#0c3569;
+  	}
+	.btn {
+		background:url(../../images/platform/log_bt.jpg) no-repeat;
+		width:41px;
+		height:20px;
+		border:0px;
+		color:#0c3569;
+		text-align: center;
+		font-size: 95.8%;	
+    }

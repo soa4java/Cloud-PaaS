@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+	<module name="ConfigFrame">
+		<group name="AsyncHttpIn">
+			<configValue key="depend"></configValue>
+			<configValue key="handler">com.primeton.paas.openapi.httpin.config.HttpInConfigHandler</configValue>
+		</group>
+	</module>
+</Config>

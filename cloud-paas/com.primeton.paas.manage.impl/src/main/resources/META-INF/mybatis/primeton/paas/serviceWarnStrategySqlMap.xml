@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="serviceWarnStrategySqlMap">
+	<!-- 
+		<typeAlias alias="ServiceWarnStrategy" type="com.primeton.paas.manage.api.app.ServiceWarnStretchStrategy"/>
+		<typeAlias alias="ServiceWarnStrategyItem" type="com.primeton.paas.manage.api.app.ServiceWarnStrategyItem"/>
+	 -->
+	 
+	 <select id="queryServiceWarnStrategyByClusterId" parameterType="java.util.HashMap" resultType="java.lang.String">
+		SELECT r.strategy_id strategyId
+		FROM PAS_SERVICE_ALARM_STRATEGY r 
+		<where>
+			<if test="clusterId !=null">
+				r.clusterId = #{clusterId} 
+			</if>  
+		</where>
+	</select>
+	<update id="updateServiceStrategyRel" parameterType="ServiceWarnStrategy">
+		UPDATE PAS_SERVICE_ALARM_STRATEGY t
+		SET t.strategy_id = #{strategyId}
+		WHERE t.clusterId = #{clusterId}
+	</update>
+	
+	<insert id="addServiceStrategyRel" parameterType="ServiceWarnStrategy">
+		INSERT INTO PAS_SERVICE_ALARM_STRATEGY (clusterId,STRATEGY_id)
+		VALUES(#{clusterId},#{strategyId})
+	</insert> 
+	<delete id="deleteServiceStrategyRel" parameterType="java.util.HashMap" >
+		delete from PAS_SERVICE_ALARM_STRATEGY 
+		where clusterId = #{clusterId}
+	</delete>
+	
+<!-- 	<select id="queryServiceStrategyIdByClusterId" parameterType="java.util.HashMap" resultType="java.lang.String"> -->
+<!-- 		SELECT strategy_Id -->
+<!-- 		FROM PAS_SERVICE_ALARM_STRATEGY -->
+<!-- 		<where> -->
+<!-- 			<if test="clusterId !=null"> -->
+<!-- 				clusterId = #{clusterId} -->
+<!-- 			</if> -->
+<!-- 		</where>	 -->
+<!-- 	</select> -->
+	
+	<select id="queryServicesByStrategyId" parameterType="java.util.HashMap" resultType="java.lang.String">
+		SELECT r.clusterId clusterId
+		FROM PAS_SERVICE_ALARM_STRATEGY r
+		<where>
+			<if test="strategyId !=null">
+				r.strategy_id = #{strategyId}
+			</if>
+		</where>	
+	</select>
+	
+	<select id="queryServiceWarnStrategy" parameterType="java.util.HashMap" resultType="ServiceWarnStrategy">
+		SELECT p.clusterId clusterId,r.strategy_id strategyId,r.isEnable isEnable,r.ignore_time ignoreTime,
+		r.continued_time continuedTime,r.alarm_type alarmType,r.alarm_address alarmAddress
+		FROM PAS_SERVICEWARN_STRATEGY r ,PAS_SERVICE_ALARM_STRATEGY p
+		<where>
+			r.strategy_id = p.strategy_Id    
+			<if test="clusterId !=null">
+				AND p.clusterId = #{clusterId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryServiceWarnStrategyItems" parameterType="java.util.HashMap" resultType="ServiceWarnStrategyItem">
+		SELECT p.strategy_id strategyId,p.item_type itemType,p.threshold threshold
+		FROM PAS_SERVICEWARN_STRATEGY_ITEM p,PAS_SERVICE_ALARM_STRATEGY r
+		<where>
+			p.strategy_id = r.strategy_id  
+			<if test="clusterId !=null">
+				AND r.clusterId = #{clusterId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryServiceWarnStrategyByStrategyId" parameterType="java.util.HashMap" resultType="ServiceWarnStrategy">
+		SELECT r.strategy_id clusterId,r.strategy_id strategyId,r.isEnable isEnable,r.ignore_time ignoreTime,
+		r.continued_time continuedTime,r.alarm_type alarmType,r.alarm_address alarmAddress
+		FROM PAS_SERVICEWARN_STRATEGY r
+		<where>
+			<if test="strategyId !=null">
+				r.strategy_Id = #{strategyId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryServiceWarnStrategyItemsByStrategyId" parameterType="java.util.HashMap" resultType="ServiceWarnStrategyItem">
+		SELECT p.strategy_id strategyId,p.item_type itemType,p.threshold threshold
+		FROM PAS_SERVICEWARN_STRATEGY_ITEM p
+		<where>
+			<if test="strategyId !=null">
+				p.strategy_Id = #{strategyId}
+			</if>
+		</where>
+	</select>
+	
+	<update id="updateServiceWarnStrategy" parameterType="ServiceWarnStrategy">
+		UPDATE PAS_SERVICEWARN_STRATEGY 
+		<set>
+			<if test="isEnable !=null">isEnable = #{isEnable}</if>			
+			<if test="continuedTime !=null and continuedTime>0">,continued_time = #{continuedTime}</if>
+			<if test="ignoreTime !=null and ignoreTime>0">,ignore_time = #{ignoreTime}</if>			
+			<if test="alarmType !=null">,alarm_type = #{alarmType}</if> 			
+			<if test="alarmAddress !=null">,alarm_address = #{alarmAddress}</if> 			
+		</set>
+		WHERE strategy_id = #{strategyId}
+	</update>
+	
+	<insert id="addServiceWarnStrategy" parameterType="ServiceWarnStrategy">
+		INSERT INTO PAS_SERVICEWARN_STRATEGY (strategy_id,ISENABLE, CONTINUED_TIME, IGNORE_TIME,alarm_type,alarm_address)
+		VALUES(#{strategyId},#{isEnable},#{continuedTime},#{ignoreTime},#{alarmType},#{alarmAddress})
+	</insert> 
+
+	<update id="updateServiceWarnStrategyItem" parameterType="ServiceWarnStrategyItem">
+		UPDATE PAS_SERVICEWARN_STRATEGY_ITEM t
+		SET t.threshold = #{threshold}
+		WHERE t.strategy_id = #{strategyId}
+		<if test="itemType !=null">
+			AND t.item_type = #{itemType}
+		</if>
+	</update>
+	
+	<insert id="addServiceWarnStrategyItem" parameterType="ServiceWarnStrategyItem">
+		INSERT INTO PAS_SERVICEWARN_STRATEGY_ITEM (STRATEGY_id, ITEM_TYPE, THRESHOLD)
+		VALUES(#{strategyId},#{itemType},#{threshold})
+	</insert> 
+	
+	
+	<delete id="removeServiceWarnStrategyItems" parameterType="java.util.HashMap">
+		DELETE FROM PAS_SERVICEWARN_STRATEGY_ITEM 
+		WHERE 
+			strategy_id = #{strategyId}
+	</delete>
+	
+	<delete id="removeServiceWarnStrategy" parameterType="java.util.HashMap">
+		DELETE FROM PAS_SERVICEWARN_STRATEGY 
+		WHERE
+			strategy_id = #{strategyId}
+	</delete>
+	
+</mapper>

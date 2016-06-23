@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="authBaseSqlMap">
+	<!--///////////////////////cap_function_temp/////////////////////// -->
+	<select id="getAllFunctions" resultType="CapFunction">
+		SELECT
+		    func_id as funcId,tenant_id as tenantId,func_name as funcName,func_type as funcType,
+			func_desc as funcDesc,func_action as funcAction,isCheck,isMenu,
+			createuser,createtime
+		FROM
+		    cap_function_temp
+	</select>
+	<select id="getFunctionByFuncId" parameterType="java.lang.String" resultType="CapFunction">
+		SELECT
+		    func_id as funcId,tenant_id as tenantId,func_name as funcName,func_type as funcType,
+			func_desc as funcDesc,func_action as funcAction,isCheck,isMenu,
+			createuser,createtime
+		FROM
+		    cap_function_temp
+		where func_id = #{value}
+	</select>
+	
+	<select id="getFunctionsByCriteria" parameterType="java.util.HashMap" resultType="CapFunction">
+		SELECT
+		    func_id as funcId,tenant_id as tenantId,func_name as funcName,func_type as funcType,
+			func_desc as funcDesc,func_action as funcAction,isCheck,isMenu,
+			createuser,createtime
+		FROM
+			cap_function_temp
+		<where>
+			<if test="funcId !=null">func_id like concat('%',#{funcId},'%')</if>
+			<if test="tenantId !=null">AND tenant_Id=#{tenantId}</if>
+			<if test="funcName !=null">AND func_name like concat('%',#{funcName},'%')</if>
+			<if test="funcType !=null">AND func_type=#{funcType}</if>
+			<if test="funcAction !=null">AND func_action like concat('%',#{funcAction},'%')</if>
+			<if test="isCheck !=null">AND isCheck=#{isCheck}</if>
+			<if test="isMenu !=null">AND isMenu=#{isMenu}</if>
+			<if test="createuser !=null">AND createuser like concat('%',#{createuser},'%')</if>
+		</where>
+	</select>
+	<select id="getFunctionCountByCriteria" parameterType="java.util.HashMap" resultType="int">
+		SELECT
+		    count(*)
+		FROM
+			cap_function_temp
+		<where>
+			<if test="funcId !=null">func_id like concat('%',#{funcId},'%')</if>
+			<if test="tenantId !=null">AND tenant_Id=#{tenantId}</if>
+			<if test="funcName !=null">AND func_name like concat('%',#{funcName},'%')</if>
+			<if test="funcType !=null">AND func_type=#{funcType}</if>
+			<if test="funcAction !=null">AND func_action like concat('%',#{funcAction},'%')</if>
+			<if test="isCheck !=null">AND isCheck=#{isCheck}</if>
+			<if test="isMenu !=null">AND isMenu=#{isMenu}</if>
+			<if test="createuser !=null">AND createuser like concat('%',#{createuser},'%')</if>
+		</where>
+	</select>
+	
+	
+	
+	<insert id="addFunction" parameterType="CapFunction" >
+		insert into cap_function_temp(func_id,tenant_id,func_name,func_type,func_desc,
+		func_action,isCheck,isMenu,createuser,createtime) values(#{funcId},#{tenantId},#{funcName},#{funcType},#{funcDesc},#{funcAction},#{isCheck},#{isMenu},#{createuser},now())
+	</insert>
+	<update id="updateFunction" parameterType="CapFunction" >
+		update cap_function_temp
+		<set>
+			<if test="funcName!=null">func_name=#{funcName}</if>
+			<if test="funcType!=null">,func_type=#{funcType}</if>
+			<if test="funcDesc!=null">,func_desc=#{funcDesc}</if>
+			<if test="funcAction!=null">,func_action=#{funcAction}</if>
+			<if test="isCheck!=null">,isCheck=#{isCheck}</if>
+			<if test="isMenu!=null">,isMenu=#{isMenu}</if>
+    	</set>
+		where func_id=#{funcId}
+	</update>
+	<delete id="deleteFunction" parameterType="CapFunction" >
+		delete from cap_function_temp
+		where func_id=#{funcId}
+	</delete>
+	
+	<delete id="deleteFunctionBatchByFunctionIds" parameterType="java.util.ArrayList" >
+		delete from cap_function_temp
+		where func_id in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+  			#{item}  
+ 		</foreach>
+	</delete>
+	
+	
+	
+	<!--///////////////////////cap_resauth_temp/////////////////////// -->
+	<select id="getCapResauthListByCriteria" parameterType="java.util.Map" resultType="CapResauth">
+		SELECT
+		    tenant_Id as tenantId,party_Id as partyId,party_Type as partyType,res_Id as resId,res_Type as resType,res_State as resState,party_Scope as partyScope,createuser,createtime
+		FROM
+		    cap_resauth_temp
+		<where>
+			<if test="tenantId != null">tenant_Id = #{tenantId}</if>
+			<if test="partyId != null">AND party_Id=#{partyId}</if>
+			<if test="partyType != null">AND party_Type=#{partyType}</if>
+			<if test="resType != null">AND res_Type=#{resType}</if>
+			<if test="resId != null">AND res_Id=#{resId}</if>		
+		</where>
+	</select>
+	
+	<select id="getFunctionIdByPartyId" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT
+		    res_Id
+		FROM
+		    cap_resauth_temp
+		where party_Id=#{partyId}
+	</select>
+	<select id="getCount" parameterType="java.util.Map" resultType="int">
+		SELECT
+		    count(*)
+		FROM
+		    cap_resauth_temp
+		where tenant_Id = #{tenantId} and party_Type=#{partyType} and party_Id=#{partyId} and res_Type=#{resType}
+	</select>
+	<insert id="addCapResauth" parameterType="CapResauth">
+		insert into cap_resauth_temp(tenant_Id,party_Id,party_Type,res_Id,res_Type,res_State,party_Scope,createuser,createtime) value(#{tenantId},#{partyId},#{partyType},#{resId},#{resType},#{resState},#{partyScope},#{createuser},now())
+	</insert>
+	<delete id="deleteCapResauthByCriteria" parameterType="java.util.HashMap">
+		delete from cap_resauth_temp
+		<where>
+			<if test="tenantId != null">tenant_Id=#{tenantId}</if>
+			<if test="partyId != null">AND party_Id=#{partyId}</if>
+			<if test="partyType != null">AND party_Type=#{partyType}</if>
+			<if test="resType != null">AND res_Type=#{resType}</if>
+			<if test="resId != null">AND res_Id=#{resId}</if>	
+		</where>
+	</delete>
+	<delete id="deleteCapResauth" parameterType="CapResauth">
+		delete from cap_resauth_temp
+		<where>
+			<if test="tenantId != null">tenant_Id=#{tenantId}</if>
+			<if test="partyId != null">AND party_Id=#{partyId}</if>
+			<if test="partyType != null">AND party_Type=#{partyType}</if>
+			<if test="resType != null">AND res_Type=#{resType}</if>
+			<if test="resId != null">AND res_Id=#{resId}</if>	
+		</where>
+	</delete>
+	
+	<!--///////////////////////cap_menu_temp/////////////////////// -->
+	<insert id="addCapMenu" parameterType="CapMenu">
+		INSERT INTO cap_menu_temp( menu_Id,tenant_Id,menu_Code,menu_Name,link_Type,link_Res,link_Action,menu_Level,menu_Seq,
+			isleaf,parent_menu_id,imagepath,expandpath,openmode,createuser,createtime)
+			VALUE(#{menuId}, #{tenantId}, #{menuCode},#{menuName},#{linkType},#{linkRes},#{linkAction},
+			#{menuLevel},#{menuSeq},#{isleaf},#{parentMenuId},#{imagepath},#{expandpath},#{openmode},#{createuser},now())
+	</insert>
+	
+	<select id="getCapMenuByParentMenuId" parameterType="java.lang.String" resultType="CapMenu">
+		select  menu_Id as menuId,tenant_Id as tenantId,menu_Code as menuCode,menu_Name as menuName,link_Type as linkType,
+			link_Res as linkRes,link_Action as linkAction,menu_Level as menuLevel,menu_Seq as menuSeq,isleaf as isleaf,
+			parent_menu_id as parentMenuId,imagepath as imagepath,expandpath as expandpath,openmode as openmode,
+			createuser as createuser,createtime as createtime
+		FROM
+		    cap_menu_temp
+		where parent_menu_id = #{value}
+		order by menu_code desc
+	</select>
+	
+	<select id="getAllCatalogMenus" resultType="CapMenu">
+		SELECT menu_Id as menuId,tenant_Id as tenantId,menu_Code as menuCode,menu_Name as menuName,link_Type as linkType,
+			link_Res as linkRes,link_Action as linkAction,menu_Level as menuLevel,menu_Seq as menuSeq,isleaf as isleaf,
+			parent_menu_id as parentMenuId,imagepath as imagepath,expandpath as expandpath,openmode as openmode,
+			createuser as createuser,createtime as createtime
+		FROM
+		    cap_menu_temp
+		where menu_level=1 or menu_level=2
+		order by menu_level asc,menu_code asc
+	</select>
+	
+	<select id="getCapMenuByMenuCode" parameterType="java.lang.String" resultType="CapMenu">
+		SELECT menu_Id as menuId,tenant_Id as tenantId,menu_Code as menuCode,menu_Name as menuName,link_Type as linkType,
+			link_Res as linkRes,link_Action as linkAction,menu_Level as menuLevel,menu_Seq as menuSeq,isleaf as isleaf,
+			parent_menu_id as parentMenuId,imagepath as imagepath,expandpath as expandpath,openmode as openmode,
+			createuser as createuser,createtime as createtime
+		FROM
+		    cap_menu_temp
+		where menu_code = #{value}
+		order by menu_code desc
+	</select>
+	
+	<select id="getCapMenuByMenuId" parameterType="java.lang.String" resultType="CapMenu">
+		SELECT menu_Id as menuId,tenant_Id as tenantId,menu_Code as menuCode,menu_Name as menuName,link_Type as linkType,
+			link_Res as linkRes,link_Action as linkAction,menu_Level as menuLevel,menu_Seq as menuSeq,isleaf as isleaf,
+			parent_menu_id as parentMenuId,imagepath as imagepath,expandpath as expandpath,openmode as openmode,
+			createuser as createuser,createtime as createtime
+		FROM
+		    cap_menu_temp
+		where menu_id = #{value}
+		order by menu_code desc
+	</select>
+	
+	<select id="getCapMenuByCriteria" parameterType="java.util.HashMap" resultType="CapMenu">
+		SELECT menu_Id as menuId,tenant_Id as tenantId,menu_Code as menuCode,menu_Name as menuName,link_Type as linkType,
+			link_Res as linkRes,link_Action as linkAction,menu_Level as menuLevel,menu_Seq as menuSeq,isleaf as isleaf,
+			parent_menu_id as parentMenuId,imagepath as imagepath,expandpath as expandpath,openmode as openmode,
+			createuser as createuser,createtime as createtime
+		FROM
+		    cap_menu_temp
+		<where>
+			<if test="menuId != null">menu_Id=#{menuId}</if> 
+    		<if test="tenantId != null">AND tenant_Id=#{tenantId}</if> 
+    		<if test="menuCode != null">AND menu_Code=#{menuCode}</if> 
+    		<if test="menuName != null">AND menu_Name=#{menuName}</if> 
+    		<if test="linkType != null">AND link_Type=#{linkType}</if> 
+    		<if test="linkRes != null">AND link_Res=#{linkRes}</if> 
+    		<if test="linkAction != null">AND link_Action=#{linkAction}</if> 
+    		<if test="menuLevel != null">AND menu_Level=#{menuLevel}</if> 
+    		<if test="menuSeq != null">AND menu_Seq=#{menuSeq}</if> 
+    		<if test="isleaf != null">AND isleaf=#{isleaf}</if>
+    		<if test="parentMenuId != null">AND parent_Menu_Id=#{parentMenuId}</if> 
+    		<if test="imagepath != null">AND imagepath=#{imagepath}</if> 
+    		<if test="expandpath != null">AND expandpath=#{expandpath}</if> 
+    		<if test="openmode != null">AND openmode=#{openmode}</if> 
+    		<if test="createuser != null">AND createuser=#{createuser}</if> 
+		</where>
+		order by menu_level desc,menu_Code asc
+	</select>
+	<select id="getCapMenuMaxPrimaryKey" resultType="java.lang.String">
+		SELECT max(menu_id) FROM cap_menu_temp
+	</select>
+	
+	<delete id="deleteCapMenuByMenuId" parameterType="java.lang.String">
+		delete
+		FROM
+		    cap_menu_temp
+		where menu_id = #{value}
+	</delete>
+	<delete id="deleteCapMenuByResourceId"  parameterType="java.lang.String">
+		delete from cap_menu_temp
+		where link_res=#{linkRes}
+	</delete>
+	<delete id="deleteCapMenuByResourceIds" parameterType="java.util.ArrayList" >
+		delete from cap_menu_temp
+		where link_res in
+		<foreach item="item" index="index" collection="list" separator=",">  
+  			#{item}  
+ 		</foreach>
+	</delete>
+	<delete id="deleteMenuBatchByMenuIds" parameterType="java.util.ArrayList" >
+		delete from cap_menu_temp
+		where menu_id in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+  			#{item.menuId}  
+ 		</foreach>
+	</delete>
+	
+	<update id="updateCapMenuByMenuId"  parameterType="CapMenu">
+		update cap_menu_temp
+		<set>
+    		<if test="menuCode != null">menu_Code=#{menuCode}</if> 
+    		<if test="menuName != null">,menu_Name=#{menuName}</if> 
+    		<if test="linkType != null">,link_Type=#{linkType}</if> 
+    		<if test="linkRes != null">,link_Res=#{linkRes}</if> 
+    		<if test="linkAction != null">,link_Action=#{linkAction}</if> 
+    		<if test="menuLevel != null">,menu_Level=#{menuLevel}</if> 
+    		<if test="menuSeq != null">,menu_Seq=#{menuSeq}</if> 
+    		<if test="isleaf != null">,isleaf=#{isleaf}</if>
+    		<if test="parentMenuId != null">,parent_Menu_Id=#{parentMenuId}</if> 
+    		<if test="imagepath != null">,imagepath=#{imagepath}</if> 
+    		<if test="expandpath != null">,expandpath=#{expandpath}</if> 
+    		<if test="openmode != null">,openmode=#{openmode}</if> 
+    		<if test="createuser != null">,createuser=#{createuser}</if>
+		</set>
+		where menu_id=#{menuId}
+	</update>
+	<update id="updateCapMenuBatch"  parameterType="java.util.ArrayList">
+		<foreach item="item" index="index" collection="list" separator=",">  
+			update cap_menu_temp
+		  <set>
+			<if test="item.menuCode != null">menu_Code=#{item.menuCode}</if> 
+    		<if test="item.menuName != null">,menu_Name=#{item.menuName}</if> 
+    		<if test="item.linkType != null">,link_Type=#{item.linkType}</if> 
+    		<if test="item.linkRes != null">,link_Res=#{item.linkRes}</if> 
+    		<if test="item.linkAction != null">,link_Action=#{item.linkAction}</if> 
+    		<if test="item.menuLevel != null">,menu_Level=#{item.menuLevel}</if> 
+    		<if test="item.menuSeq != null">,menu_Seq=#{item.menuSeq}</if> 
+    		<if test="item.isleaf != null">,isleaf=#{item.isleaf}</if>
+    		<if test="item.parentMenuId != null">,parent_Menu_Id=#{item.parentMenuId}</if> 
+    		<if test="item.imagepath != null">,imagepath=#{item.imagepath}</if> 
+    		<if test="item.expandpath != null">,expandpath=#{item.expandpath}</if> 
+    		<if test="item.openmode != null">,openmode=#{item.openmode}</if> 
+    		<if test="item.createuser != null">,createuser=#{item.createuser}</if>
+    	  </set>
+    	  where menu_id=#{item.menuId}
+ 		</foreach>
+	</update>
+	
+	
+	<!--///////////////////////cap_partyauth_temp/////////////////////// -->
+	<insert id="addPartyAuth" parameterType="CapPartyauth">
+		insert into cap_partyauth_temp(tenant_id,role_id,role_type,party_id,party_type,
+				createuser,createtime) value(#{tenantId},#{roleId},#{roleType},#{partyId},#{partyType},
+				#{createuser},now())
+	</insert>
+	<select id="getCapPartyauthByCriteria" parameterType="java.util.HashMap"  resultType="CapPartyauth">
+		select tenant_id as tenantId,role_id as roleId,role_type as roleType,party_id as partyId,party_type as partyType,createuser,createtime
+		from cap_partyauth_temp
+		<where>
+			<if test="tenantId != null">tenant_id=#{tenantId}</if> 
+    		<if test="roleId != null">AND role_id=#{roleId}</if> 
+    		<if test="roleType != null">AND role_type=#{roleType}</if> 
+    		<if test="partyId != null">AND party_id=#{partyId}</if> 
+    		<if test="partyType != null">AND party_type=#{partyType}</if> 
+    		<if test="createuser != null">AND createuser=#{createuser}</if> 
+		</where>
+	</select>
+	<delete id="deletePartyAuth" parameterType="CapPartyauth">
+		delete from cap_partyauth_temp
+		where role_id=#{roleId} and party_id=#{partyId}
+	</delete>
+	<delete id="deletePartyAuthByCriteria" parameterType="java.util.HashMap">
+		delete from cap_partyauth_temp
+		<where>
+			<if test="tenantId != null">tenant_id=#{tenantId}</if> 
+    		<if test="roleId != null">AND role_id=#{roleId}</if> 
+    		<if test="roleType != null">AND role_type=#{roleType}</if> 
+    		<if test="partyId != null">AND party_id=#{partyId}</if> 
+    		<if test="partyType != null">AND party_type=#{partyType}</if> 
+    		<if test="createuser != null">AND createuser=#{createuser}</if> 
+		</where>
+	</delete>
+	<delete id="deletePartyAuthByIds" parameterType="java.util.ArrayList">
+		delete from cap_partyauth_temp
+		where party_id in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+  			#{item.partyId} 
+ 		</foreach>
+	</delete>
+	
+	
+	<!--///////////////////////cap_role_temp/////////////////////// -->
+	<insert id="insertCapRole" parameterType="CapRole" >
+		INSERT INTO cap_role_temp(role_id,tenant_id,role_code,role_name,role_desc,
+		createuser,createtime) VALUES(#{roleId}, #{tenantId}, #{roleCode},#{roleName},#{roleDesc},#{createuser},now())
+	</insert>
+	<select id="getCapRoleMaxPrimaryKey" resultType="java.lang.String">
+		select max(role_id) as maxKey from cap_role_temp
+	</select>
+	<select id="getCapRoleByCriteria" parameterType="java.util.HashMap" resultType="CapRole">
+		select role_id as roleId,tenant_id as tenantId,role_code as roleCode,role_name as roleName,role_desc as roleDesc,createuser,createtime
+		from cap_role_temp
+		<where>
+			<if test="roleId != null">role_id like concat('%',#{roleId},'%')</if>
+			<if test="tenantId != null">AND tenant_id like concat('%',#{tenantId},'%')</if>  
+			<if test="roleCode != null">AND role_code like concat('%',#{roleCode},'%')</if>
+			<if test="roleName != null">AND role_name like concat('%',#{roleName},'%')</if>
+			<if test="roleDesc != null">AND role_desc like concat('%',#{roleDesc},'%')</if>
+			<if test="createuser != null">AND createuser like concat('%',#{createuser},'%')</if>
+		</where>
+	</select>
+	<select id="getRoleByRoleCode" parameterType="java.util.HashMap" resultType="CapRole">
+		select role_id as roleId,tenant_id as tenantId,role_code as roleCode,role_name as roleName,role_desc as roleDesc,createuser,createtime
+		from cap_role_temp
+		where role_Code=#{roleCode}
+	</select>
+	
+	<select id="getRoleCountByCriteria" parameterType="java.util.HashMap" resultType="int">
+		select count(*)
+		from cap_role_temp
+		<where>
+			<if test="roleId != null">role_id like concat('%',#{roleId},'%')</if>
+			<if test="tenantId != null">AND tenant_id like concat('%',#{tenantId},'%')</if>  
+			<if test="roleCode != null">AND role_code like concat('%',#{roleCode},'%')</if>
+			<if test="roleName != null">AND role_name like concat('%',#{roleName},'%')</if>
+			<if test="roleDesc != null">AND role_desc like concat('%',#{roleDesc},'%')</if>
+			<if test="createuser != null">AND createuser like concat('%',#{createuser},'%')</if>
+		</where>
+	</select>
+	
+	<update id="updateCapRole" parameterType="CapRole" >
+		update cap_role_temp
+		<set>
+			<if test="roleName != null">role_name=#{roleName}</if>
+			<if test="roleDesc != null">,role_desc=#{roleDesc}</if>
+		</set>
+		where role_Code=#{roleCode}
+	</update>
+	<delete id="deleteCapRole" parameterType="java.lang.String" >
+		delete from cap_role_temp
+		where role_id=#{roleId}
+	</delete>
+	
+	<!--///////////////////////cap_user  cap_user_temp/////////////////////// -->
+	<insert id="addCapUser" parameterType="CapUser">
+		insert into cap_user_temp(operator_Id,tenant_Id,user_Id,password,user_Name,tel,phone,email,address,status,gender,lastlogin,createuser,createtime,notes)
+		 value(#{operatorId},#{tenantId},#{userId},#{password},#{userName},#{tel},#{phone},#{email},#{address},
+			#{status},#{gender},now(),#{createuser},now(),#{notes})
+	</insert>
+	<select id="getCapUserByUserId" resultType="CapUser">
+		select operator_Id as operatorId,tenant_Id as tenantId,user_Id as userId,password,user_Name as userName,tel,phone,email,address,
+			status,gender,lastlogin,createuser,createtime,notes
+		from cap_user_temp
+		where user_id=#{userId}
+	</select>
+	<select id="isIllegalCapUser" resultType="CapUser">
+		select operator_Id as operatorId,tenant_Id as tenantId,user_Id as userId,password,user_Name as userName,tel,phone,email,address,
+			status,gender,lastlogin,createuser,createtime,notes
+		from cap_user_temp
+		where user_id=#{userId} and password=#{password} and state=4
+	</select>
+	<update id="updateCapUser" parameterType="java.util.HashMap">
+		update cap_user_temp
+		<set>
+			<if test="userName != null">user_name=#{userName}</if>
+			<if test="password != null">,password=#{password}</if>
+			<if test="status != null and status>0.0">,status=#{status}</if>
+			<if test="gender != null">,gender=#{gender}</if>
+			<if test="tel != null">,tel=#{tel}</if>
+			<if test="phone != null">,phone=#{phone}</if>
+			<if test="email != null">,email=#{email}</if>
+			<if test="address != null">,address=#{address}</if>
+			<if test="notes != null">,notes=#{notes}</if>
+			<if test="createuser != null">,createuser=#{createuser}</if>
+		</set>
+		where user_id=#{userId}
+	</update>
+	<select id="getAllCapUsers" resultType="CapUser">
+		select operator_Id as operatorId,tenant_Id as tenantId,user_Id as userId,password,user_Name as userName,tel,phone,email,address,
+			status,gender,lastlogin,createuser,createtime,notes
+		from cap_user_temp
+	</select>
+	<select id="getAllCapUserByCriteria"  resultType="CapUser">
+		select operator_Id as operatorId,tenant_Id as tenantId,user_Id as userId,password,user_Name as userName,tel,phone,email,address,
+			status,gender,lastlogin,createuser,createtime,notes
+		from cap_user_temp
+		<where>
+			<if test="operatorId != null">operator_Id=#{operatorId}</if>
+			<if test="tenantId != null">AND tenant_Id=#{tenantId}</if>
+			<if test="userName != null">AND user_name=#{userName}</if>
+			<if test="tel != null">AND tel=#{tel}</if>
+			<if test="phone != null">AND phone=#{phone}</if>
+			<if test="email != null">AND email=#{email}</if>
+			<if test="status != null">AND status=#{status}</if>
+			<if test="gender != null">AND gender=#{gender}</if>
+			<if test="phone != null">AND phone=#{phone}</if>
+			<if test="createuser != null">AND createuser=#{createuser}</if>
+		</where>
+	</select>
+	<select id="getCapUserByCriteria"  resultType="CapUser">
+		select operator_Id as operatorId,tenant_Id as tenantId,user_Id as userId,password,user_Name as userName,tel,phone,email,address,status,gender,lastlogin,createuser,createtime,notes
+		from cap_user_temp
+		<where>
+			<if test="userId != null">user_id like concat('%',#{userId},'%')</if>
+			<if test="status != null">AND status=#{status}</if>
+			<if test="userName != null">AND user_name like concat('%',#{userName},'%')</if>
+			<if test="tel != null">AND tel like concat('%',#{tel},'%')</if>
+			<if test="phone != null">AND phone like concat('%',#{phone},'%')</if>
+			<if test="email != null">AND email like concat('%',#{email},'%')</if>
+			<if test="createuser != null">AND createuser like concat('%',#{createuser},'%')</if>
+		</where>
+	</select>
+	<select id="getUserCountByCriteria"  resultType="int">
+		select count(*)
+		from cap_user_temp
+		<where>
+			<if test="userId != null">user_id like concat('%',#{userId},'%')</if>
+			<if test="status != null">AND status=#{status}</if>
+			<if test="userName != null">AND user_name like concat('%',#{userName},'%')</if>
+			<if test="tel != null">AND tel like concat('%',#{tel},'%')</if>
+			<if test="phone != null">AND phone like concat('%',#{phone},'%')</if>
+			<if test="email != null">AND email like concat('%',#{email},'%')</if>
+			<if test="createuser != null">AND createuser like concat('%',#{createuser},'%')</if>
+		</where>
+	</select>
+	<select id="getCapUserMaxPrimaryKey" resultType="java.lang.String">
+		select max(operator_Id) as maxKey from cap_user_temp
+	</select>
+	<delete id="deleteCapUserById" parameterType="java.lang.String">
+		delete from cap_user_temp
+		where user_id=#{userId}
+	</delete>
+</mapper>

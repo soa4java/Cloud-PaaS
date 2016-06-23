@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<application xmlns="http://www.primeton.com/xmlns/paas/1.0">
+	<module name="ServiceGradePolicy">
+		<group name="priority">
+			<configValue key="BankCardQuery">high</configValue>
+		</group>
+	</module>
+	<module name="ServiceGradePriorityRate">
+		<group name="default">
+			<configValue key="rate">5</configValue>
+		</group>
+	</module>
+</application>

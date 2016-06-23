@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="varSqlMap">
+
+	<!-- <typeAlias alias="Var" type="com.primeton.paas.manage.api.model.Variable"/>  -->
+	
+	<insert id="addVariable" parameterType="Var">
+	 	INSERT INTO PAS_SYSTEM_CONFIG(COL_KEY,COL_VALUE,COL_DESC)
+ 		VALUES(#{varKey},#{varValue},#{description})
+	</insert>
+
+	<update id="updateVariable" parameterType="Var">
+		 UPDATE PAS_SYSTEM_CONFIG 
+		 	SET COL_VALUE=#{varValue} , COL_DESC=#{description}
+		  	WHERE COL_KEY=#{varKey}
+	</update>
+
+	<delete id="delVariable" parameterType="java.lang.String">
+		DELETE FROM PAS_SYSTEM_CONFIG WHERE COL_KEY=#{varKey}
+	</delete>
+	
+	<delete id="delAll">
+		DELETE FROM PAS_SYSTEM_CONFIG 
+	</delete>
+
+	<select id="getVariable" parameterType="java.lang.String" resultType="Var">
+		SELECT COL_KEY as varKey ,COL_VALUE as varValue,COL_DESC as description
+		FROM PAS_SYSTEM_CONFIG
+		WHERE COL_KEY = #{varKey}
+	</select>
+	
+	<select id="getAll" resultType="Var">
+		SELECT COL_KEY as varKey ,COL_VALUE as varValue,COL_DESC as description
+		FROM PAS_SYSTEM_CONFIG
+		<where>
+			<if test="varKey != null">
+				COL_KEY = #{varKey}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="getVarCount" parameterType="Var" resultType="int">
+		SELECT count(1)
+		FROM PAS_SYSTEM_CONFIG
+		<where>
+			<if test="varKey != null">
+				COL_KEY like concat('%',#{varKey},'%')
+			</if>
+			<if test="varValue != null">
+				AND COL_Value like concat('%',#{varValue},'%')
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="getVars" parameterType="Var" resultType="Var">
+		SELECT COL_KEY as varKey ,COL_VALUE as varValue,COL_DESC as description
+		FROM PAS_SYSTEM_CONFIG
+		<where>
+			<if test="varKey != null">
+				COL_KEY like concat('%',#{varKey},'%')
+			</if>
+			<if test="varValue != null">
+				AND COL_VALUE like concat('%',#{varValue},'%')
+			</if>
+		</where>
+	</select>
+</mapper>

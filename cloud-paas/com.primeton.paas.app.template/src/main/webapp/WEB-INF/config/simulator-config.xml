@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<application xmlns="http://www.unionpay.com/xmlns/upaas/1.0">
+	<module name="SimulatorDataSource">
+		<!--模拟数据源配置-->
+		<group name="default">
+			<configValue key="c3p0.driverClass">com.mysql.jdbc.Driver</configValue>
+			<configValue key="c3p0.jdbcUrl">jdbc:mysql://127.0.0.1:3306/test</configValue>
+			<configValue key="c3p0.user">root</configValue>
+			<configValue key="c3p0.password">root</configValue>
+			<configValue key="c3p0.initialPoolSize">5</configValue>
+			<configValue key="c3p0.minPoolSize">5</configValue>
+			<configValue key="c3p0.maxPoolSize">10</configValue>
+			<configValue key="c3p0.acquireRetryAttempts">1</configValue>
+			<configValue key="c3p0.acquireRetryDelay">1000</configValue>
+			<configValue key="c3p0.acquireIncrement">2</configValue>
+			<configValue key="c3p0.checkoutTimeout">60000</configValue>
+			<configValue key="c3p0.idleConnectionTestPeriod">60000</configValue>
+			<configValue key="c3p0.preferredTestQuery"></configValue>
+		</group>
+	</module>
+	<module name="SimulatorVariable">
+		<!--模拟变量定义-->
+		<group name="var1">
+			<configValue key="value">value1</configValue>
+			<configValue key="valueType">String</configValue>
+			<configValue key="desc">This is description for var1.</configValue>
+		</group>
+		<group name="var2">
+			<configValue key="value">value2</configValue>
+			<configValue key="valueType">String</configValue>
+			<configValue key="desc">This is description for var2.</configValue>
+		</group>
+	</module>
+</application>

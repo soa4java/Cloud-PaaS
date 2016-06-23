@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="com.primeton.paas.app.template">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="com.primeton.paas.app-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.app/com.primeton.paas.app">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.cesium.common-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.cesium.common/org.gocom.cloud.cesium.common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.cesium.config-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.cesium.config/org.gocom.cloud.cesium.config">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.cesium.zkclient-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.cesium.zkclient/org.gocom.cloud.cesium.zkclient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.cesium.manage.runtime-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.cesium.manage.runtime/org.gocom.cloud.cesium.manage.runtime">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.cesium.model-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.cesium.model/org.gocom.cloud.cesium.model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.cesium.mqclient-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.cesium.mqclient/org.gocom.cloud.cesium.mqclient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.common.exception-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.common.exception/org.gocom.cloud.common.exception">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.common.logger-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.common.logger/org.gocom.cloud.common.logger">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.common.utility-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.common.utility/org.gocom.cloud.common.utility">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.mail.model-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.mail.model/com.primeton.paas.mail.model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.collect.common-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.collect.common/com.primeton.paas.collect.common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.app.config-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.app.config/com.primeton.paas.app.config">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/com.primeton.paas.app.template/target/classes"/>
+        <property name="context-root" value="template"/>
+        <property name="component.exclusion.patterns" value="WEB-INF/lib/c3p0-*.jar,WEB-INF/lib/httpclient-*.jar,WEB-INF/lib/httpcore-*.jar,WEB-INF/lib/ibatis2-*.jar,WEB-INF/lib/junit-*.jar,WEB-INF/lib/mysql-connector-java-*.jar,WEB-INF/lib/netty-*.jar,WEB-INF/lib/servlet-api-*.jar"/>
+    </wb-module>
+</project-modules>

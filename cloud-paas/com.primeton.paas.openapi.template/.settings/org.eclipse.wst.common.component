@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="com.primeton.paas.openapi.template">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="com.primeton.paas.common-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.common/com.primeton.paas.common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.common.exception-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.common.exception/org.gocom.cloud.common.exception">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.common.logger-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.common.logger/org.gocom.cloud.common.logger">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.common.utility-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.common.utility/org.gocom.cloud.common.utility">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.exception-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.exception/com.primeton.paas.exception">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.openapi.admin-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.openapi.admin/com.primeton.paas.openapi.admin">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.openapi.base-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.openapi.base/com.primeton.paas.openapi.base">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.openapi.engine-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.openapi.engine/com.primeton.paas.openapi.engine">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.openapi.flowcontrol-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.openapi.flowcontrol/com.primeton.paas.openapi.flowcontrol">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.openapi.httpin-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.openapi.httpin/com.primeton.paas.openapi.httpin">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.cesium.zkclient-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.cesium.zkclient/org.gocom.cloud.cesium.zkclient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.cesium.common-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.cesium.common/org.gocom.cloud.cesium.common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.openapi.invoker-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.openapi.invoker/com.primeton.paas.openapi.invoker">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.cardbin.client-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.cardbin.client/com.primeton.paas.cardbin.client">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.cesium.model-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.cesium.model/org.gocom.cloud.cesium.model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.gocom.cloud.cesium.manage.runtime-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.gocom.cloud.cesium.manage.runtime/org.gocom.cloud.cesium.manage.runtime">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.cardbin.common-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.cardbin.common/com.primeton.paas.cardbin.common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.sms.client-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.sms.client/com.primeton.paas.sms.client">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.sms.common-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.sms.common/com.primeton.paas.sms.common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.openapi.msgreduce-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.openapi.msgreduce/com.primeton.paas.openapi.msgreduce">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.primeton.paas.openapi.security-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/com.primeton.paas.openapi.security/com.primeton.paas.openapi.security">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="default"/>
+        <property name="java-output-path" value="/com.primeton.paas.openapi.template/target/classes"/>
+        <property name="component.exclusion.patterns" value="WEB-INF/lib/c3p0-*.jar,WEB-INF/lib/commons-logging-*.jar,WEB-INF/lib/hsqldb-*.jar,WEB-INF/lib/javax.servlet-*.jar,WEB-INF/lib/jetty-*.jar,WEB-INF/lib/jline-*.jar,WEB-INF/lib/junit-*.jar,WEB-INF/lib/mchange-commons-java-*.jar,WEB-INF/lib/midao-c3p0-*.jar,WEB-INF/lib/netty-*.jar,WEB-INF/lib/servlet-api-*.jar,WEB-INF/lib/stax-api-*.jar,WEB-INF/lib/xalan-*.jar"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="storagePoolSqlMap">
+	<select id="getById" parameterType="java.lang.String" resultType="StoragePoolConfig">
+		SELECT id
+			, name
+			, storageSize
+			, minSize
+			, maxSize
+			, increaseSize
+			, decreaseSize
+			, retrySize
+			, timeInterval
+			, waitIncreaseTime
+			, waitDecreaseTime
+			, createTimeout
+			, destroyTimeout
+			, isEnable
+			, remarks 
+		FROM pas_storage_pool
+		where id = #{id}
+	</select>
+
+	<insert id="add" parameterType="StoragePoolConfig">
+		INSERT INTO pas_storage_pool (
+			id
+			<if test="name !=null">, name</if>
+			<if test="storageSize !=null and storageSize>0.0">, storageSize</if>
+			<if test="minSize !=null">, minSize</if>
+			<if test="maxSize !=null">, maxSize</if>
+			<if test="increaseSize !=null">, increaseSize</if>
+			<if test="decreaseSize !=null">, decreaseSize</if>
+			<if test="retrySize !=null">, retrySize</if>
+			<if test="timeInterval !=null">, timeInterval</if>
+			<if test="waitIncreaseTime !=null">, waitIncreaseTime</if>
+			<if test="waitDecreaseTime !=null">, waitDecreaseTime</if>
+			<if test="createTimeout !=null">, createTimeout</if>
+			<if test="destroyTimeout !=null">, destroyTimeout</if>
+			<if test="isEnable !=null">, isEnable</if>
+			<if test="remarks !=null">, remarks</if>
+		) 
+		VALUES (
+			#{id}
+			<if test="name !=null">, #{name}</if>
+			<if test="storageSize !=null and storageSize>0.0">, #{storageSize}</if>
+			<if test="minSize !=null">, #{minSize}</if>
+			<if test="maxSize !=null">, #{maxSize}</if>
+			<if test="increaseSize !=null">, #{increaseSize}</if>
+			<if test="decreaseSize !=null">, #{decreaseSize}</if>
+			<if test="retrySize !=null">, #{retrySize}</if>
+			<if test="timeInterval !=null">, #{timeInterval}</if>
+			<if test="waitIncreaseTime !=null">, #{waitIncreaseTime}</if>
+			<if test="waitDecreaseTime !=null">, #{waitDecreaseTime}</if>
+			<if test="createTimeout !=null">, #{createTimeout}</if>
+			<if test="destroyTimeout !=null">, #{destroyTimeout}</if>
+			<if test="isEnable !=null">, #{isEnable}</if>
+			<if test="remarks !=null">, #{remarks}</if>
+		);
+	</insert>
+	
+	<select id="getAllByCondition" parameterType="java.util.HashMap" resultType="StoragePoolConfig">
+		SELECT id
+			, name
+			, storageSize
+			, minSize
+			, maxSize
+			, increaseSize
+			, decreaseSize
+			, retrySize
+			, timeInterval
+			, waitIncreaseTime
+			, waitDecreaseTime
+			, createTimeout
+			, destroyTimeout
+			, isEnable
+			, remarks 
+		FROM pas_storage_pool
+		WHERE 1 = 1
+			<if test="id !=null">
+				AND id = #{id}
+			</if>
+			<if test="storageSize !=null and storageSize>0.0">
+				AND storageSize = #{storageSize}
+			</if>
+			<if test="isEnable !=null">
+				AND isEnable = #{isEnable}
+			</if>
+		order by id desc
+	</select>
+	
+	<select id="countByCondition" parameterType="java.util.HashMap" resultType="int">
+		SELECT 	count(*)
+		FROM pas_storage_pool
+		WHERE 1 = 1
+			<if test="id !=null">
+				AND id = #{id}
+			</if>
+			<if test="storageSize !=null and storageSize>0.0">
+				AND storageSize = #{storageSize}
+			</if>
+			<if test="isEnable !=null">
+				AND isEnable = #{isEnable}
+			</if>
+	</select>
+	
+	<update id="update" parameterType="StoragePoolConfig">
+			UPDATE pas_storage_pool 
+			<set>
+				<if test="name !=null">name=#{name},</if>
+				<if test="storageSize !=null and storageSize>0.0">storageSize=#{storageSize},</if>
+				<if test="minSize !=null and minSize>0.0">minSize=#{minSize},</if> 
+				<if test="maxSize !=null">maxSize=#{maxSize},</if>
+				<if test="increaseSize !=null">increaseSize=#{increaseSize},</if>
+				<if test="decreaseSize !=null">decreaseSize=#{decreaseSize},</if>
+				<if test="retrySize !=null">retrySize=#{retrySize},</if>
+				<if test="timeInterval !=null">timeInterval=#{timeInterval},</if>
+				<if test="waitIncreaseTime !=null">waitIncreaseTime=#{waitIncreaseTime},</if>
+				<if test="waitDecreaseTime !=null">waitDecreaseTime=#{waitDecreaseTime},</if>
+				<if test="createTimeout !=null">createTimeout=#{createTimeout},</if>
+				<if test="destroyTimeout !=null">destroyTimeout=#{destroyTimeout},</if>
+				<if test="isEnable !=null">isEnable=#{isEnable},</if>
+				<if test="remarks !=null">remarks=#{remarks}</if>
+			</set>
+			WHERE id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.String">
+		DELETE FROM pas_storage_pool WHERE id in ( #{id} )
+	</delete>
+	
+</mapper>
